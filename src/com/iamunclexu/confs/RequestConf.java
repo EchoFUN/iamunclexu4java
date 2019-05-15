@@ -2,11 +2,13 @@ package com.iamunclexu.confs;
 
 import com.iamunclexu.controllers.Controller;
 import com.iamunclexu.controllers.HelloworldController;
+import com.iamunclexu.controllers.HomeController;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static com.iamunclexu.confs.RequestUrl.URL_HELLO_WORLD;
+import static com.iamunclexu.confs.RequestUrl.URL_HOME;
 
 public class RequestConf {
 
@@ -22,6 +24,7 @@ public class RequestConf {
     }
 
     public void init() {
+        requestContainer.put(URL_HOME, new HomeController());
         requestContainer.put(URL_HELLO_WORLD, new HelloworldController());
     }
 
