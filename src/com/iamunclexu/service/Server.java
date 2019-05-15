@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
@@ -37,18 +38,15 @@ public class Server {
             return;
         }
         int port = Integer.parseInt(args[0]);
-        try {
-            new Server(port).start();
-            LOGGER.info("Service started at the port of " + port);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        new Server(port).start();
+        LOGGER.info("Service started at the port of " + port);
     }
 
     public void start() {
         ServerBootstrap bootstrap = new ServerBootstrap();
-        NioEventLoopGroup group = new NioEventLoopGroup();
-        bootstrap.group(group).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.SO_KEEPALIVE, Boolean.TRUE);
+        NioEventLoopGroup masterGroup = new NioEventLoopGroup();
+        NioEventLoopGroup slaveGroup = new NioEventLoopGroup();
+        bootstrap.group(masterGroup, slaveGroup).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.SO_KEEPALIVE, Boolean.TRUE);
 
         bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
             @Override
@@ -64,9 +62,14 @@ public class Server {
         });
 
         try {
-            bootstrap.bind(port).sync();
+            ChannelFuture channelFuture = bootstrap.bind(port).sync();
+
+            // TODO do not know why this method will be invoked ?
+            // channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            masterGroup.shutdownGracefully();
+            slaveGroup.shutdownGracefully();
+            LOGGER.error(e.getMessage());
         }
     }
 }
