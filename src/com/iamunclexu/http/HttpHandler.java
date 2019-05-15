@@ -34,6 +34,7 @@ public class HttpHandler extends SimpleChannelInboundHandler<FullHttpRequest> { 
         heads.add(HttpHeaderNames.CONTENT_TYPE, contentType + "; charset=UTF-8");
         heads.add(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
         heads.add(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE);
+        heads.add("ri", "ni");
 
         ctx.write(response);
     }

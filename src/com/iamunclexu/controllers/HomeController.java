@@ -30,7 +30,7 @@ public class HomeController extends Controller {
         try {
             connection = DBUtils.getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("select id from post");
+            resultSet = statement.executeQuery("select id, title, content from post");
 
             while (resultSet.next()) {
                 output += String.valueOf(resultSet.getInt("id"));
