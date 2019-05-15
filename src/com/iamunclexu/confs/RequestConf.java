@@ -3,6 +3,7 @@ package com.iamunclexu.confs;
 import com.iamunclexu.controllers.Controller;
 import com.iamunclexu.controllers.HelloworldController;
 import com.iamunclexu.controllers.HomeController;
+import com.iamunclexu.controllers.NotFoundController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +35,6 @@ public class RequestConf {
                 return entry.getValue();
             }
         }
-        return null;
+        return new NotFoundController();
     }
 }
