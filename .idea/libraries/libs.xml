@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/com/iamunclexu/libs/netty.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/iamunclexu/libs/rxjava.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
