@@ -1,44 +1,16 @@
 package com.iamunclexu.controllers;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import io.netty.buffer.Unpooled;
+import io.netty.handler.codec.http.DefaultFullHttpResponse;
+import io.netty.handler.codec.http.HttpRequest;
+import io.netty.handler.codec.http.HttpResponse;
+import io.netty.handler.codec.http.HttpResponseStatus;
+import io.netty.handler.codec.http.HttpVersion;
 
 public class HelloworldController extends Controller {
 
     @Override
-    public void process(Request request, Response response) {
-
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-        try {
-            connection = DBUtils.getConnection();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery("select id from post");
-
-            String output = "";
-            while (resultSet.next()) {
-                output += String.valueOf(resultSet.getInt("id"));
-            }
-            response.write(output);
-        } catch (Exception e) {
-            Logger.error(e);
-        } finally {
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    DBUtils.releaseConnection(connection);
-                }
-            } catch (SQLException e) {
-                Logger.error(e);
-            }
-        }
+    public HttpResponse process(HttpRequest request) {
+        return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, Unpooled.wrappedBuffer("test".getBytes()));
     }
 }

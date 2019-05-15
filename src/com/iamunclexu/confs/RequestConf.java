@@ -1,16 +1,12 @@
-package configrations;
+package com.iamunclexu.confs;
 
 import com.iamunclexu.controllers.Controller;
+import com.iamunclexu.controllers.HelloworldController;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import handlers.Controller;
-import handlers.HelloworldController;
-import handlers.NotFoundController;
-
 import static com.iamunclexu.confs.RequestUrl.URL_HELLO_WORLD;
-import static request.RequestUrl.URL_HELLO_WORLD;
 
 public class RequestConf {
 
@@ -31,10 +27,10 @@ public class RequestConf {
 
     public Controller fetchControllerByUrl(String uri) {
         for (Map.Entry<String, Controller> entry : requestContainer.entrySet()) {
-            if (entry.getKey().equals(uri)) {
+            if (entry.getKey().equals(uri)) {      // TODO the route rules can be more completed .
                 return entry.getValue();
             }
         }
-        return new NotFoundController();
+        return null;
     }
 }

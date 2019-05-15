@@ -6,6 +6,8 @@
 
 package com.iamunclexu.service;
 
+import com.iamunclexu.confs.RequestConf;
+import com.iamunclexu.database.DBUtils;
 import com.iamunclexu.http.HttpHandler;
 
 import org.slf4j.Logger;
@@ -38,8 +40,14 @@ public class Server {
             return;
         }
         int port = Integer.parseInt(args[0]);
+        init();
         new Server(port).start();
         LOGGER.info("Service started at the port of " + port);
+    }
+
+    public static void init() {
+        DBUtils.inst().init();
+        RequestConf.inst().init();
     }
 
     public void start() {
@@ -62,7 +70,8 @@ public class Server {
         });
 
         try {
-            ChannelFuture channelFuture = bootstrap.bind(port).sync();
+            bootstrap.bind(port).sync();
+            // ChannelFuture channelFuture = bootstrap.bind(port).sync();
 
             // TODO do not know why this method will be invoked ?
             // channelFuture.channel().closeFuture().sync();
