@@ -22,6 +22,9 @@ public class HttpHandler extends SimpleChannelInboundHandler<FullHttpRequest> { 
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest msg) {
+
+
+
         DefaultFullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, Unpooled.wrappedBuffer("test".getBytes())); // 2
 
         HttpHeaders heads = response.headers();
@@ -36,7 +39,7 @@ public class HttpHandler extends SimpleChannelInboundHandler<FullHttpRequest> { 
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         LOGGER.info("channelReadComplete");
         super.channelReadComplete(ctx);
-        ctx.flush(); // 4
+        ctx.flush();
     }
 
     @Override

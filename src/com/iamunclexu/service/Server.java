@@ -51,12 +51,12 @@ public class Server {
         bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
             @Override
             public void initChannel(SocketChannel ch) {
-                LOGGER.debug("initChannel ch:" + ch);
+                LOGGER.info("initChannel ch:" + ch);
 
                 ChannelPipeline pipeline = ch.pipeline();
                 pipeline.addLast("decoder", new HttpRequestDecoder());
                 pipeline.addLast("encoder", new HttpResponseEncoder());
-                pipeline.addLast("aggregator", new HttpObjectAggregator(512 * 1024));
+                pipeline.addLast("aggregator", new HttpObjectAggregator(512 * 1024));  // 聚合类，方便后续使用的 FullHttpRequest 。
                 pipeline.addLast("handler", new HttpHandler());
             }
         });
