@@ -1,0 +1,31 @@
+.intro-0 {
+  background: url(/static/image/about/0.png) no-repeat scroll 0 0 transparent;
+  height: 538px;
+  width: 569px;
+}
+
+.intro-1 {
+  background: url(/static/image/about/1.png) no-repeat scroll 0 0 transparent;
+  height: 296px;
+  width: 569px;
+  margin-top: 0;
+}
+
+.intro-2 {
+  background: url(/static/image/about/2.png) no-repeat scroll 0 0 transparent;
+  height: 230px;
+  width: 569px;
+  margin-top: 10px;
+}
+
+.intro-3 {
+  background: url(/static/image/about/3.png) no-repeat scroll 0 0 transparent;
+  height: 500px;
+  width: 576px;
+  margin-top: 10px;
+}
+
+.main {
+  width: 650px;
+  float: left;
+}

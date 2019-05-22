@@ -1,0 +1,12 @@
+
+.main {
+  width: 650px;
+  float: left;
+}
+
+.main h1 {
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  background: url(/static/image/big-line.gif) 0 bottom no-repeat;
+}

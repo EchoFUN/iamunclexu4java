@@ -7,6 +7,7 @@
 package com.iamunclexu.service;
 
 import com.iamunclexu.confs.RequestConf;
+import com.iamunclexu.confs.TemplateConf;
 import com.iamunclexu.database.DBUtils;
 import com.iamunclexu.http.HttpHandler;
 
@@ -48,6 +49,7 @@ public class Server {
     public static void init() {
         DBUtils.inst().init();
         RequestConf.inst().init();
+        TemplateConf.inst().init();
     }
 
     public void start() {

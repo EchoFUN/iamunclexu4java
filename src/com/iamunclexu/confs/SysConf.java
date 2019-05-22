@@ -4,12 +4,12 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import static configrations.Constant.CONNECTION_POOL_SIZE;
-import static configrations.Constant.DEVELOPMENT_ENV_FLAG;
-import static configrations.Constant.PASSWORD;
-import static configrations.Constant.PRODUCTION_ENV_FLAG;
-import static configrations.Constant.URL;
-import static configrations.Constant.USERNAME;
+import static com.iamunclexu.confs.Constant.CONNECTION_POOL_SIZE;
+import static com.iamunclexu.confs.Constant.DEVELOPMENT_ENV_FLAG;
+import static com.iamunclexu.confs.Constant.PASSWORD;
+import static com.iamunclexu.confs.Constant.PRODUCTION_ENV_FLAG;
+import static com.iamunclexu.confs.Constant.URL;
+import static com.iamunclexu.confs.Constant.USERNAME;
 
 public class SysConf {
 

@@ -1,15 +1,22 @@
 package com.iamunclexu.controllers;
 
+import com.iamunclexu.confs.TemplateConf;
 import com.iamunclexu.database.DBUtils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 
+import freemarker.template.Configuration;
+import freemarker.template.Template;
 import io.netty.buffer.Unpooled;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;
 import io.netty.handler.codec.http.HttpRequest;
@@ -35,6 +42,18 @@ public class HomeController extends Controller {
             while (resultSet.next()) {
                 output += String.valueOf(resultSet.getInt("id"));
             }
+
+
+            Configuration configuration = TemplateConf.fetchConfiguration();
+            Template template = configuration.getTemplate("home.ftl");
+
+            Map<String, String> root = new HashMap<>();
+            root.put("name", "cxl");
+            root.put("age", "25");
+            StringWriter stringWriter = new StringWriter();
+            template.process(root, stringWriter);
+
+            output = stringWriter.toString();
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         } finally {

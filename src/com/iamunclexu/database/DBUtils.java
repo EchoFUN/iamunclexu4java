@@ -10,10 +10,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
 
-import static configrations.Constant.CONNECTION_POOL_SIZE;
-import static configrations.Constant.PASSWORD;
-import static configrations.Constant.URL;
-import static configrations.Constant.USERNAME;
+import static com.iamunclexu.confs.Constant.CONNECTION_POOL_SIZE;
+import static com.iamunclexu.confs.Constant.PASSWORD;
+import static com.iamunclexu.confs.Constant.URL;
+import static com.iamunclexu.confs.Constant.USERNAME;
 
 public class DBUtils {
 
