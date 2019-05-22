@@ -25,7 +25,7 @@ public class TemplateConf {
     }
 
     public void init() {
-        Configuration configuration = new Configuration();
+        configuration = new Configuration();
         try {
             configuration.setDirectoryForTemplateLoading(new File(TEMPLATE_DOCUMENT));
         } catch (IOException e) {

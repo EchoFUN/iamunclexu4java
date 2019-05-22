@@ -8,11 +8,11 @@
 <!--<![endif]-->
 
 <head>
-    {% include "component/head.html" %}
+    <#include "component/head.ftl" >
 </head>
 
 <body>
-{% include "component/banner.html" %}
+<#include "component/banner.ftl" >
 <div class="wrapper">
     <div class="wrapper-inner">
         <div class="main article-list">
@@ -28,7 +28,7 @@
             </div>
             {% endfor %}
         </div>
-        {% include "component/sidebar.html" %}
+        <#include "component/sidebar.ftl" >
         <div style="clear: both;"></div>
         <div class="pagination clearfix">
             {% if has_next %}
@@ -40,7 +40,7 @@
         </div>
     </div>
 </div>
-{% include "component/footer.html" %}
+<#include "component/footer.ftl" >
 
 <script src="/static/lib/jquery.js"></script>
 <script src="/static/index/index.js"></script>

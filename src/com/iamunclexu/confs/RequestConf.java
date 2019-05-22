@@ -4,6 +4,7 @@ import com.iamunclexu.controllers.Controller;
 import com.iamunclexu.controllers.HelloworldController;
 import com.iamunclexu.controllers.HomeController;
 import com.iamunclexu.controllers.NotFoundController;
+import com.iamunclexu.controllers.StaticController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +17,8 @@ public class RequestConf {
     Map<String, Controller> requestContainer = new HashMap<>();
 
     private static RequestConf requestMap;
+    private StaticController staticController;
+    NotFoundController notFoundController;
 
     public static RequestConf inst() {
         if (requestMap == null) {
@@ -27,6 +30,8 @@ public class RequestConf {
     public void init() {
         requestContainer.put(URL_HOME, new HomeController());
         requestContainer.put(URL_HELLO_WORLD, new HelloworldController());
+        staticController = new StaticController();
+        notFoundController = new NotFoundController();
     }
 
     public Controller fetchControllerByUrl(String uri) {
@@ -35,6 +40,11 @@ public class RequestConf {
                 return entry.getValue();
             }
         }
-        return new NotFoundController();
+
+        // Execute the static files .
+        if (uri.contains("/static/")) {
+            return staticController;
+        }
+        return notFoundController;
     }
 }

@@ -23,15 +23,13 @@ import static com.iamunclexu.confs.RequestConf.inst;
 public class HttpHandler extends SimpleChannelInboundHandler<FullHttpRequest> { // 1
     private static Logger LOGGER = LoggerFactory.getLogger(HttpHandler.class);
 
-    private AsciiString contentType = HttpHeaderValues.TEXT_PLAIN;
-
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) {
         Controller handler = RequestConf.inst().fetchControllerByUrl(request.getUri());
         DefaultFullHttpResponse response = (DefaultFullHttpResponse) handler.process(request);
 
         HttpHeaders heads = response.headers();
-        heads.add(HttpHeaderNames.CONTENT_TYPE, contentType + "; charset=UTF-8");
+        heads.add(HttpHeaderNames.CONTENT_TYPE, "text/html" + "; charset=UTF-8");
         heads.add(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
         heads.add(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE);
         heads.add("ri", "ni");

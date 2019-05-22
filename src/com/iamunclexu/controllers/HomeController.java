@@ -6,13 +6,14 @@ import com.iamunclexu.database.DBUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import freemarker.template.Configuration;
@@ -37,22 +38,23 @@ public class HomeController extends Controller {
         try {
             connection = DBUtils.getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("select id, title, content from post");
+            resultSet = statement.executeQuery("select *, content from post");
 
+            List<Map<String, String>> posts = new ArrayList();
             while (resultSet.next()) {
-                output += String.valueOf(resultSet.getInt("id"));
+                Map<String, String> fieldDataSet = new HashMap<>();
+                fieldDataSet.put("id", String.valueOf(resultSet.getInt("id")));
+                posts.add(fieldDataSet);
             }
 
 
             Configuration configuration = TemplateConf.fetchConfiguration();
             Template template = configuration.getTemplate("home.ftl");
 
-            Map<String, String> root = new HashMap<>();
-            root.put("name", "cxl");
-            root.put("age", "25");
+            Map<String, List<Map<String, String>>> root = new HashMap<>();
+            root.put("posts", posts);
             StringWriter stringWriter = new StringWriter();
             template.process(root, stringWriter);
-
             output = stringWriter.toString();
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
