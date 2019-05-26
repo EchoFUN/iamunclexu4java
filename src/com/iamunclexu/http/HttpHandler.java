@@ -2,38 +2,50 @@ package com.iamunclexu.http;
 
 import com.iamunclexu.confs.RequestConf;
 import com.iamunclexu.controllers.Controller;
+import com.iamunclexu.utils.Utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.netty.buffer.Unpooled;
+import javax.activation.MimetypesFileTypeMap;
+
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;
 import io.netty.handler.codec.http.FullHttpRequest;
-import io.netty.handler.codec.http.HttpHeaderNames;
 import io.netty.handler.codec.http.HttpHeaderValues;
 import io.netty.handler.codec.http.HttpHeaders;
-import io.netty.handler.codec.http.HttpResponseStatus;
-import io.netty.handler.codec.http.HttpVersion;
-import io.netty.util.AsciiString;
 
-import static com.iamunclexu.confs.RequestConf.inst;
+import static com.iamunclexu.confs.Constant.CONTENT_TYPE_CSS;
+import static com.iamunclexu.confs.Constant.CONTENT_TYPE_HTML;
+import static com.iamunclexu.confs.Constant.CONTENT_TYPE_JAVASCRIPT;
+import static io.netty.handler.codec.http.HttpHeaderNames.CONTENT_TYPE;
+import static io.netty.handler.codec.rtsp.RtspHeaderNames.CONNECTION;
+import static io.netty.handler.codec.rtsp.RtspHeaderNames.CONTENT_LENGTH;
 
 public class HttpHandler extends SimpleChannelInboundHandler<FullHttpRequest> { // 1
     private static Logger LOGGER = LoggerFactory.getLogger(HttpHandler.class);
 
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) {
-        Controller handler = RequestConf.inst().fetchControllerByUrl(request.getUri());
+        String requestUri = request.uri();
+
+        Controller handler = RequestConf.inst().fetchControllerByUrl(requestUri);
         DefaultFullHttpResponse response = (DefaultFullHttpResponse) handler.process(request);
 
         HttpHeaders heads = response.headers();
-        heads.add(HttpHeaderNames.CONTENT_TYPE, "text/html" + "; charset=UTF-8");
-        heads.add(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
-        heads.add(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE);
-        heads.add("ri", "ni");
-
+        heads.add(CONTENT_TYPE, CONTENT_TYPE_HTML);
+        heads.add(CONTENT_LENGTH, response.content().readableBytes());
+        heads.add(CONNECTION, HttpHeaderValues.KEEP_ALIVE);
+        if (Utils.isStaticUri(requestUri)) {
+            if (requestUri.contains(".js")) {
+                heads.set(CONTENT_TYPE, CONTENT_TYPE_JAVASCRIPT);
+            }
+            if (requestUri.contains(".css")) {
+                heads.set(CONTENT_TYPE, CONTENT_TYPE_CSS);
+            }
+        }
         ctx.write(response);
     }
 

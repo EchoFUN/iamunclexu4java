@@ -11,4 +11,9 @@ public class Constant {
     public static String PRODUCTION_ENV_FLAG = "--prod";
 
     public static String TEMPLATE_DOCUMENT = "templates";
+
+
+    public static String CONTENT_TYPE_HTML = "text/html; charset=UTF-8";
+    public static String CONTENT_TYPE_JAVASCRIPT = "application/javascript";
+    public static String CONTENT_TYPE_CSS = "text/css";
 }

@@ -5,6 +5,7 @@ import com.iamunclexu.controllers.HelloworldController;
 import com.iamunclexu.controllers.HomeController;
 import com.iamunclexu.controllers.NotFoundController;
 import com.iamunclexu.controllers.StaticController;
+import com.iamunclexu.utils.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +43,7 @@ public class RequestConf {
         }
 
         // Execute the static files .
-        if (uri.contains("/static/")) {
+        if (Utils.isStaticUri(uri)) {
             return staticController;
         }
         return notFoundController;
