@@ -15,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 
 import io.netty.buffer.Unpooled;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;
+import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.codec.http.HttpResponse;
 import io.netty.handler.codec.http.HttpResponseStatus;
@@ -62,6 +63,10 @@ public class StaticController extends Controller {
             httpResponseStatus = HttpResponseStatus.NOT_FOUND;
         }
 
-        return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, httpResponseStatus, Unpooled.wrappedBuffer(linesTxt.getBytes()));
+        DefaultFullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, httpResponseStatus, Unpooled.wrappedBuffer(linesTxt.getBytes()));
+        HttpHeaders headers = response.headers();
+
+        // TODO add the static mine type to the resposne header .
+        return response;
     }
 }

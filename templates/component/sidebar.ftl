@@ -2,7 +2,7 @@
 
 	<div class="widget widget-avatarbox">
 		<div class="avatar">
-			<img width="80" height="80" src="http://ww3.sinaimg.cn/mw1024/6bf9eebbjw1ed7nmcrwx9j206l06m3yi.jpg">
+			<img width="80" height="80" src="/static/image/avatar.jpg">
 		</div>
 		<div class="description">
 			奔三路上的

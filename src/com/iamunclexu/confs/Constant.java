@@ -16,4 +16,5 @@ public class Constant {
     public static String CONTENT_TYPE_HTML = "text/html; charset=UTF-8";
     public static String CONTENT_TYPE_JAVASCRIPT = "application/javascript";
     public static String CONTENT_TYPE_CSS = "text/css";
+    public static String CONTENT_TYPE_IMAGE_JPG = "image/jpeg";
 }

@@ -18,6 +18,7 @@ import io.netty.handler.codec.http.HttpHeaders;
 
 import static com.iamunclexu.confs.Constant.CONTENT_TYPE_CSS;
 import static com.iamunclexu.confs.Constant.CONTENT_TYPE_HTML;
+import static com.iamunclexu.confs.Constant.CONTENT_TYPE_IMAGE_JPG;
 import static com.iamunclexu.confs.Constant.CONTENT_TYPE_JAVASCRIPT;
 import static io.netty.handler.codec.http.HttpHeaderNames.CONTENT_TYPE;
 import static io.netty.handler.codec.rtsp.RtspHeaderNames.CONNECTION;
@@ -39,12 +40,20 @@ public class HttpHandler extends SimpleChannelInboundHandler<FullHttpRequest> { 
         heads.add(CONTENT_LENGTH, response.content().readableBytes());
         heads.add(CONNECTION, HttpHeaderValues.KEEP_ALIVE);
         if (Utils.isStaticUri(requestUri)) {
+
+
+            /*
             if (requestUri.contains(".js")) {
                 heads.set(CONTENT_TYPE, CONTENT_TYPE_JAVASCRIPT);
             }
             if (requestUri.contains(".css")) {
                 heads.set(CONTENT_TYPE, CONTENT_TYPE_CSS);
             }
+            if (requestUri.contains(".jpg")) {
+                heads.set(CONTENT_TYPE, CONTENT_TYPE_IMAGE_JPG);
+            }
+            */
+
         }
         ctx.write(response);
     }
