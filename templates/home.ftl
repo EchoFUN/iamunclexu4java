@@ -16,17 +16,17 @@
 <div class="wrapper">
     <div class="wrapper-inner">
         <div class="main article-list">
-            {% for post in posts %}
-            <div class="post" id="post-{{ post.id }}">
-                <h2><a href="/post?id={{ post.id }}">{{ post.title }}</a></h2>
+            <#list posts as post>
+            <div class="post" id="post-${ post.id }">
+                <h2><a href="/post?id=${ post.id }">${ post.title }</a></h2>
                 <div class="post-meta">
                     <span class="date">{{ post.formated }}</span>
                     <span class="author">{{ post.author }}</span>
-                    <span class="comments"><a href="javascript:;" title="{{ post.title }}">0</a></span>
+                    <span class="comments"><a href="javascript:;" title="${ post.title }">0</a></span>
                 </div>
                 <div class="post-content">{% autoescape off %}{{ post.content }}{% endautoescape %}</div>
             </div>
-            {% endfor %}
+            </#list>
         </div>
         <#include "component/sidebar.ftl" >
         <div style="clear: both;"></div>

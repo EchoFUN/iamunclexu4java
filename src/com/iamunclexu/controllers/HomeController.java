@@ -38,13 +38,26 @@ public class HomeController extends Controller {
         try {
             connection = DBUtils.getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("select *, content from post");
 
+            // Post Data .
+            resultSet = statement.executeQuery("select id, title, content from post");
             List<Map<String, String>> posts = new ArrayList();
             while (resultSet.next()) {
                 Map<String, String> fieldDataSet = new HashMap<>();
                 fieldDataSet.put("id", String.valueOf(resultSet.getInt("id")));
+                fieldDataSet.put("title", resultSet.getString("title"));
                 posts.add(fieldDataSet);
+            }
+
+            // Menu data .
+            resultSet = statement.executeQuery("select id, title, url from menu");
+            List<Map<String, String>> menus = new ArrayList<>();
+            while (resultSet.next()) {
+                Map<String, String> fieldDataSet = new HashMap<>();
+                fieldDataSet.put("id", String.valueOf(resultSet.getInt("id")));
+                fieldDataSet.put("title", resultSet.getString("title"));
+                fieldDataSet.put("url", resultSet.getString("url"));
+                menus.add(fieldDataSet);
             }
 
 
@@ -53,6 +66,7 @@ public class HomeController extends Controller {
 
             Map<String, List<Map<String, String>>> root = new HashMap<>();
             root.put("posts", posts);
+            root.put("menus", menus);
             StringWriter stringWriter = new StringWriter();
             template.process(root, stringWriter);
             output = stringWriter.toString();

@@ -1,7 +1,5 @@
 package com.iamunclexu.controllers;
 
-import com.iamunclexu.http.HttpHandler;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,6 +18,8 @@ import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.codec.http.HttpResponse;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
+
+import static io.netty.handler.codec.http.HttpHeaderNames.CONTENT_TYPE;
 
 public class StaticController extends Controller {
     private static Logger LOGGER = LoggerFactory.getLogger(StaticController.class);
@@ -62,11 +62,18 @@ public class StaticController extends Controller {
         } else {
             httpResponseStatus = HttpResponseStatus.NOT_FOUND;
         }
-
         DefaultFullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, httpResponseStatus, Unpooled.wrappedBuffer(linesTxt.getBytes()));
         HttpHeaders headers = response.headers();
 
-        // TODO add the static mine type to the resposne header .
+        if (uri.contains(".js")) {
+            headers.add(CONTENT_TYPE, "application/javascript");
+        }
+        if (uri.contains(".css")) {
+            headers.add(CONTENT_TYPE, "text/css");
+        }
+        if (uri.contains(".jpg")) {
+            headers.add(CONTENT_TYPE, "image/jpeg");
+        }
         return response;
     }
 }

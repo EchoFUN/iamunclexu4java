@@ -8,10 +8,10 @@
 </div>
 <div class="navigator">
 	<ul>
-		{% for menu in user_menu %}
-		<li {% if path == menu.url or path == '/post' and menu.url == '/' %}class="active" {% endif %}>
-			<a href="{{ menu.url }}">{{ menu.title }}</a>
+		<#list menus as menu>
+		<li <#if '/' == menu.url>class="active" ></#if>
+			<a href="${ menu.url }">${ menu.title }</a>
 		</li>
-		{% endfor %}
+		</#list>
 	</ul>
 </div>

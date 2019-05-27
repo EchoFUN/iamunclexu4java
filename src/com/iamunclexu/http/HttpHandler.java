@@ -35,14 +35,14 @@ public class HttpHandler extends SimpleChannelInboundHandler<FullHttpRequest> { 
         Controller handler = RequestConf.inst().fetchControllerByUrl(requestUri);
         DefaultFullHttpResponse response = (DefaultFullHttpResponse) handler.process(request);
 
-        HttpHeaders heads = response.headers();
-        heads.add(CONTENT_TYPE, CONTENT_TYPE_HTML);
-        heads.add(CONTENT_LENGTH, response.content().readableBytes());
-        heads.add(CONNECTION, HttpHeaderValues.KEEP_ALIVE);
+        HttpHeaders headers = response.headers();
+        if (headers.get(CONTENT_TYPE) == null) {
+            headers.add(CONTENT_TYPE, CONTENT_TYPE_HTML);
+        }
+        headers.add(CONTENT_LENGTH, response.content().readableBytes());
+        headers.add(CONNECTION, HttpHeaderValues.KEEP_ALIVE);
+        /*
         if (Utils.isStaticUri(requestUri)) {
-
-
-            /*
             if (requestUri.contains(".js")) {
                 heads.set(CONTENT_TYPE, CONTENT_TYPE_JAVASCRIPT);
             }
@@ -52,21 +52,24 @@ public class HttpHandler extends SimpleChannelInboundHandler<FullHttpRequest> { 
             if (requestUri.contains(".jpg")) {
                 heads.set(CONTENT_TYPE, CONTENT_TYPE_IMAGE_JPG);
             }
-            */
-
         }
+        */
         ctx.write(response);
     }
 
     @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+    public void channelReadComplete(ChannelHandlerContext ctx) {
         LOGGER.info("channelReadComplete");
-        super.channelReadComplete(ctx);
+        try {
+            super.channelReadComplete(ctx);
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
         ctx.flush();
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         LOGGER.info("exceptionCaught");
         if (null != cause) cause.printStackTrace();
         if (null != ctx) ctx.close();
