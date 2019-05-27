@@ -1,2 +1,2 @@
-# JWS
-Just for learning of the java web server .
+# My blog webside
+Use the netty server .
