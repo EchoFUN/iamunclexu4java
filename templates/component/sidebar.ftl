@@ -2,7 +2,8 @@
 
 	<div class="widget widget-avatarbox">
 		<div class="avatar">
-			<img width="80" height="80" src="/static/image/avatar.jpg">
+<#--			<img width="80" height="80" src="/static/image/avatar.jpg">-->
+			<img width="80" height="80" src="http://s.xnimg.cn/a.gif">
 		</div>
 		<div class="description">
 			奔三路上的
