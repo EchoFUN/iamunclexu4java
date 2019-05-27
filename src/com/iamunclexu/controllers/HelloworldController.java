@@ -11,10 +11,7 @@ public class HelloworldController extends Controller {
 
     @Override
     public HttpResponse process(HttpRequest request) {
-
-
-
-
+        
         return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, Unpooled.wrappedBuffer("test".getBytes()));
     }
 }

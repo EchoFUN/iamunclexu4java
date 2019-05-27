@@ -27,11 +27,13 @@ public class ModelPost {
             statement = connection.createStatement();
 
             // ModelPost Data .
-            resultSet = statement.executeQuery("select id, title, content from post");
+            resultSet = statement.executeQuery("select id, title, content, author from post");
             while (resultSet.next()) {
                 Map<String, String> fieldDataSet = new HashMap<>();
                 fieldDataSet.put("id", String.valueOf(resultSet.getInt("id")));
                 fieldDataSet.put("title", resultSet.getString("title"));
+                fieldDataSet.put("content", resultSet.getString("content"));
+                fieldDataSet.put("author", resultSet.getString("author"));
                 posts.add(fieldDataSet);
             }
 

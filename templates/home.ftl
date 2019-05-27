@@ -21,7 +21,7 @@
                 <h2><a href="/post?id=${ post.id }">${ post.title }</a></h2>
                 <div class="post-meta">
                     <span class="date">{{ post.formated }}</span>
-                    <span class="author">{{ post.author }}</span>
+                    <span class="author">${ post.author }</span>
                     <span class="comments"><a href="javascript:;" title="${ post.title }">0</a></span>
                 </div>
                 <div class="post-content">{% autoescape off %}{{ post.content }}{% endautoescape %}</div>

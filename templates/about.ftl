@@ -8,12 +8,12 @@
 <!--<![endif]-->
 
 <head>
-    {% include "component/head.html" %}
+    <#include "component/head.ftl" >
     <link rel="stylesheet" href="/static/about/index.css">
 </head>
 
 <body>
-    {% include "component/banner.html" %}
+    <#include "component/banner.ftl" >
     <div class="wrapper">
         <div class="wrapper-inner clearfix">
             <div class="main">
@@ -22,10 +22,10 @@
                 <div class="intro-2"></div>
                 <div class="intro-3"></div>
             </div>
-            {% include "component/sidebar.html" %}
+            <#include "component/sidebar.ftl" >
         </div>
     </div>
-    {% include "component/footer.html" %}
+    <#include "component/footer.ftl" >
 </body>
 
 </html>
