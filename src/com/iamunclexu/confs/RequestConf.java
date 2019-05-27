@@ -9,6 +9,8 @@ import com.iamunclexu.utils.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.iamunclexu.confs.RequestUrl.URL_HELLO_WORLD;
 import static com.iamunclexu.confs.RequestUrl.URL_HOME;
@@ -35,10 +37,28 @@ public class RequestConf {
         notFoundController = new NotFoundController();
     }
 
+    public String extractPureUri(String uri) {
+        Pattern pattern = Pattern.compile("([^?=&]+)(=([^&]*))?");
+        Matcher matcher = pattern.matcher(uri);
+        while (matcher.find()) {
+
+        }
+        return null;
+    }
+
+    public Map<String, String> extractQuery(String uri) {
+        System.out.println(uri);
+        return null;
+    }
+
     public Controller fetchControllerByUrl(String uri) {
+        String updatedUri = extractPureUri(uri);
+
         for (Map.Entry<String, Controller> entry : requestContainer.entrySet()) {
-            if (entry.getKey().equals(uri)) {      // TODO the route rules can be more completed .
-                return entry.getValue();
+            if (entry.getKey().equals(updatedUri)) {           // TODO the route rules can be more completed .
+                Controller controller = entry.getValue();
+                controller.setQueryData(extractQuery(uri));
+                return controller;
             }
         }
 

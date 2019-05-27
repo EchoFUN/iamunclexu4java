@@ -30,6 +30,11 @@ public class HomeController extends Controller {
     public HttpResponse process(HttpRequest request) {
         String output;
 
+
+
+
+
+
         List<Map<String, String>> posts = (new ModelPost()).fetchPosts();
         List<Map<String, String>> menus = (new ModelMenu()).fetchMenus();
 
