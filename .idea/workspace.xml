@@ -23,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/confs/RequestConf.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+            <state relative-caret-position="169">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
@@ -32,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/http/HttpHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="224">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
               <folding>
                 <element signature="e#1849#2289#0" />
               </folding>
@@ -265,12 +265,12 @@
       <workItem from="1558927197321" duration="5726000" />
       <workItem from="1558953064824" duration="4600000" />
       <workItem from="1559010759474" duration="1213000" />
-      <workItem from="1559062123465" duration="1050000" />
+      <workItem from="1559062123465" duration="1229000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41788000" />
+    <option name="totallyTimeSpent" value="41967000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -286,7 +286,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3296146" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.36897767" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3478261" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3478261" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -313,18 +313,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/iamunclexu/confs/RequestConf.java</url>
-          <line>40</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -739,8 +727,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/http/HttpHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="224">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
           <folding>
             <element signature="e#1849#2289#0" />
           </folding>
@@ -749,8 +737,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/confs/RequestConf.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+        <state relative-caret-position="169">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>
