@@ -38,17 +38,30 @@ public class RequestConf {
     }
 
     public String extractPureUri(String uri) {
-        Pattern pattern = Pattern.compile("([^?=&]+)(=([^&]*))?");
-        Matcher matcher = pattern.matcher(uri);
-        while (matcher.find()) {
+        String pureUri = uri;
 
+        if (uri.contains("?")) {
+            String[] tokens = uri.split("\\?");
+            if (tokens.length > 1) {
+                pureUri = tokens[0];
+            }
         }
-        return null;
+        return pureUri;
     }
 
     public Map<String, String> extractQuery(String uri) {
-        System.out.println(uri);
-        return null;
+        Map<String, String> queryMap = new HashMap<>();
+
+        Pattern pattern = Pattern.compile("([^?=&]+)(=([^&]*))?");
+        Matcher matcher = pattern.matcher(uri);
+        while (matcher.find()) {
+            String key = matcher.group(1);
+            String value = matcher.group(3);
+            if (key != null && value != null) {
+                queryMap.put(key, value);
+            }
+        }
+        return queryMap;
     }
 
     public Controller fetchControllerByUrl(String uri) {
