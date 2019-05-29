@@ -59,7 +59,7 @@ public class HttpHandler extends SimpleChannelInboundHandler<FullHttpRequest> { 
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
-        LOGGER.info("channelReadComplete");
+        // LOGGER.info("channelReadComplete");
         try {
             super.channelReadComplete(ctx);
         } catch (Exception e) {

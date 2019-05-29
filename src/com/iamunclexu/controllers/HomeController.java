@@ -30,7 +30,8 @@ public class HomeController extends Controller {
     public HttpResponse process(HttpRequest request) {
         String output;
 
-
+        String pager = queryData.get("p");
+        LOGGER.info("Current pager is : " + pager);
 
 
 

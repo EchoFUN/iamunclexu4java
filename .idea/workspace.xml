@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f5fb188-5c44-4995-beed-6b8329d93bf4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iamunclexu/confs/RequestConf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iamunclexu/confs/RequestConf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iamunclexu/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iamunclexu/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iamunclexu/http/HttpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iamunclexu/http/HttpHandler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,23 +20,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/confs/RequestConf.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="239">
+              <caret line="40" column="29" lean-forward="true" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/http/HttpHandler.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/controllers/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
-              <folding>
-                <element signature="e#1849#2289#0" />
-              </folding>
+            <state relative-caret-position="196">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
             </state>
           </provider>
         </entry>
@@ -52,7 +49,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>debug</find>
       <find>4j</find>
       <find>com.mchange.v2.log.mlog</find>
       <find>mlog =</find>
@@ -82,6 +78,7 @@
       <find>$</find>
       <find>奔三路上的</find>
       <find>output</find>
+      <find>channelReadComplete</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -120,10 +117,10 @@
         <option value="$PROJECT_DIR$/templates/about.ftl" />
         <option value="$PROJECT_DIR$/templates/home.ftl" />
         <option value="$PROJECT_DIR$/src/com/iamunclexu/controllers/HelloworldController.java" />
-        <option value="$PROJECT_DIR$/src/com/iamunclexu/http/HttpHandler.java" />
         <option value="$PROJECT_DIR$/src/com/iamunclexu/controllers/Controller.java" />
-        <option value="$PROJECT_DIR$/src/com/iamunclexu/controllers/HomeController.java" />
         <option value="$PROJECT_DIR$/src/com/iamunclexu/confs/RequestConf.java" />
+        <option value="$PROJECT_DIR$/src/com/iamunclexu/controllers/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/com/iamunclexu/http/HttpHandler.java" />
       </list>
     </option>
   </component>
@@ -133,10 +130,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="124" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="148" />
     <option name="y" value="23" />
-    <option name="width" value="1606" />
+    <option name="width" value="1749" />
     <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -181,6 +178,14 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="iamunclexu" type="462c0819:PsiDirectoryNode" />
               <item name="confs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iamunclexu4java" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iamunclexu4java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="iamunclexu" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -265,18 +270,18 @@
       <workItem from="1558927197321" duration="5726000" />
       <workItem from="1558953064824" duration="4600000" />
       <workItem from="1559010759474" duration="1213000" />
-      <workItem from="1559062123465" duration="1229000" />
+      <workItem from="1559062123465" duration="2147000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41967000" />
+    <option name="totallyTimeSpent" value="42885000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <frame x="148" y="23" width="1749" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989858" visible="true" weight="0.26041666" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989858" visible="true" weight="0.21440823" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -285,7 +290,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3296146" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36897767" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.46551725" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3478261" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -700,13 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/controllers/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="44" column="33" lean-forward="true" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/confs/RequestUrl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -725,20 +723,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/confs/RequestConf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="40" column="29" lean-forward="true" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/http/HttpHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="270">
+          <caret line="68" column="5" lean-forward="true" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
           <folding>
             <element signature="e#1849#2289#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/confs/RequestConf.java">
+    <entry file="file://$PROJECT_DIR$/src/com/iamunclexu/controllers/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="196">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
