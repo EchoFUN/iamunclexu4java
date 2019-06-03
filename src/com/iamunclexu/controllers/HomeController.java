@@ -1,9 +1,9 @@
 package com.iamunclexu.controllers;
 
-import com.iamunclexu.database.ModelLink;
-import com.iamunclexu.database.ModelMenu;
-import com.iamunclexu.database.ModelMicroBlogs;
-import com.iamunclexu.database.ModelPost;
+import com.iamunclexu.database.LinkModel;
+import com.iamunclexu.database.MenuModel;
+import com.iamunclexu.database.MicroBlogsModel;
+import com.iamunclexu.database.PostModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,7 +25,7 @@ public class HomeController extends Controller {
     @Override
     public HttpResponse process(HttpRequest request) {
         Map<String, Object> root = new HashMap<>();
-        ModelPost modelPost = new ModelPost();
+        PostModel postModel = new PostModel();
 
         int pager;
         try {
@@ -34,7 +34,7 @@ public class HomeController extends Controller {
             pager = 0;
         }
         int starter = pager * PAGE_COUNT;
-        List<Map<String, String>> posts = modelPost.fetchPostsByPager(starter);
+        List<Map<String, String>> posts = postModel.fetchPostsByPager(starter);
 
         for (int i = 0; i < posts.size(); i++) {
             Map<String, String> post = posts.get(i);
@@ -49,12 +49,12 @@ public class HomeController extends Controller {
             }
         }
         root.put("posts", posts);
-        root.put("menus", (new ModelMenu()).fetchMenus());
-        root.put("microblogs", (new ModelMicroBlogs()).fetchMicroBlogs());
-        root.put("links", (new ModelLink()).fetchLinks());
-        root.put("recent_post", modelPost.fetchRecentPost());
+        root.put("menus", (new MenuModel()).fetchMenus());
+        root.put("microblogs", (new MicroBlogsModel()).fetchMicroBlogs());
+        root.put("links", (new LinkModel()).fetchLinks());
+        root.put("recent_post", postModel.fetchRecentPost());
 
-        int counter = modelPost.fetchPostCount();
+        int counter = postModel.fetchPostCount();
         if ((pager + 1) * PAGE_COUNT <= counter) {
             root.put("has_next", true);
             root.put("has_prev", false);

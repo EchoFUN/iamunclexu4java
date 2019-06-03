@@ -14,8 +14,8 @@ import java.util.Map;
 
 import static com.iamunclexu.confs.SysConf.PAGE_COUNT;
 
-public class ModelPost {
-    private static Logger LOGGER = LoggerFactory.getLogger(ModelPost.class);
+public class PostModel {
+    private static Logger LOGGER = LoggerFactory.getLogger(PostModel.class);
 
     Connection connection = null;
     Statement statement = null;
@@ -28,7 +28,7 @@ public class ModelPost {
             connection = DBUtils.getConnection();
             statement = connection.createStatement();
 
-            // ModelPost Data .
+            // PostModel Data .
             resultSet = statement.executeQuery("select id, title, content, author, date from post where visiable = 1 order by date desc  limit " + PAGE_COUNT + " offset " + starter);
             while (resultSet.next()) {
                 Map<String, String> fieldDataSet = new HashMap<>();
@@ -97,7 +97,7 @@ public class ModelPost {
             connection = DBUtils.getConnection();
             statement = connection.createStatement();
 
-            // ModelPost Data .
+            // PostModel Data .
             resultSet = statement.executeQuery("select id, title from post where visiable = 1 order by date desc  limit 10");
             while (resultSet.next()) {
                 Map<String, String> fieldDataSet = new HashMap<>();
@@ -133,7 +133,7 @@ public class ModelPost {
             connection = DBUtils.getConnection();
             statement = connection.createStatement();
 
-            // ModelPost Data .
+            // PostModel Data .
             resultSet = statement.executeQuery("select id, title, content, date, author from post where id = " + id);
             while (resultSet.next()) {
                 Map<String, String> fieldDataSet = new HashMap<>();

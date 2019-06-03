@@ -8,31 +8,31 @@
 <!--<![endif]-->
 
 <head>
-    {% include "component/head.html" %}
+    <#include "component/head.ftl">
     <link rel="stylesheet" href="/static/post/index.css">
 </head>
 
 <body>
-    {% include "component/banner.html" %}
+    <#include "component/banner.ftl">
     <div class="wrapper">
         <div class="wrapper-inner clearfix">
             <div class="main">
-                <h1>{{ post_details.title }}</h1>
+                <h1>${ post_details.title }</h1>
                 <div class="post-meta">
-                    <span class="date">{{ post_date }}</span>
-                    <span class="author">{{ post_details.author }}</span>
+                    <span class="date">${ post_details.date }</span>
+                    <span class="author">${ post_details.author }</span>
                     <span class="comments">
-                        <a href="javascript:;" title="{{ post_details.author }}">0</a>
+                        <a href="javascript:;" title="${ post_details.author }">0</a>
                     </span>
                 </div>
                 <div class="post-content">
-                    {% autoescape off %}{{ post_details.content }}{% endautoescape %}
+                    ${ post_details.content }
                 </div>
             </div>
-            {% include "component/sidebar.html" %}
+            <#include "component/sidebar.ftl">
         </div>
     </div>
-    {% include "component/footer.html" %}
+    <#include "component/footer.ftl">
 </body>
 
 </html>

@@ -12,28 +12,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ModelMenu {
-    private static Logger LOGGER = LoggerFactory.getLogger(ModelPost.class);
+public class MicroBlogsModel {
+    private static Logger LOGGER = LoggerFactory.getLogger(MicroBlogsModel.class);
 
     Connection connection = null;
     Statement statement = null;
     ResultSet resultSet = null;
 
-    public List<Map<String, String>> fetchMenus() {
-        List<Map<String, String>> menus = new ArrayList<>();
+    public List<Map<String, String>> fetchMicroBlogs() {
+        List<Map<String, String>> microblogs = new ArrayList<>();
         try {
             connection = DBUtils.getConnection();
             statement = connection.createStatement();
 
-            resultSet = statement.executeQuery("select id, title, url from menu");
+            resultSet = statement.executeQuery("select id, date, text from microblogs;");
             while (resultSet.next()) {
                 Map<String, String> fieldDataSet = new HashMap<>();
                 fieldDataSet.put("id", String.valueOf(resultSet.getInt("id")));
-                fieldDataSet.put("title", resultSet.getString("title"));
-                fieldDataSet.put("url", resultSet.getString("url"));
-                menus.add(fieldDataSet);
+                fieldDataSet.put("date", resultSet.getString("date"));
+                fieldDataSet.put("text", resultSet.getString("text"));
+                microblogs.add(fieldDataSet);
             }
-
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         } finally {
@@ -51,6 +50,6 @@ public class ModelMenu {
                 LOGGER.error(e.getMessage());
             }
         }
-        return menus;
+        return microblogs;
     }
 }

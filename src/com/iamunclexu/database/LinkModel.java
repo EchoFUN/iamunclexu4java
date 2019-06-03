@@ -12,8 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ModelLink {
-    private static Logger LOGGER = LoggerFactory.getLogger(ModelLink.class);
+public class LinkModel {
+    private static Logger LOGGER = LoggerFactory.getLogger(LinkModel.class);
 
     Connection connection = null;
     Statement statement = null;

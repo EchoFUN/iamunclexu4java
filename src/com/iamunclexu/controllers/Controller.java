@@ -23,14 +23,18 @@ public abstract class Controller {
 
     public String render(String tpl, Map<String, Object> root) {
         Configuration configuration = TemplateConf.fetchConfiguration();
-        StringWriter stringWriter = new StringWriter();
+        StringWriter builder = new StringWriter();
 
         try {
-            configuration.getTemplate(tpl).process(root, stringWriter);
+            configuration.getTemplate(tpl).process(root, builder);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
-        return stringWriter.toString();
+        return builder.toString();
+    }
+
+    public String render(String tpl) {
+        return render(tpl, null);
     }
 
     public void setQueryData(Map<String, String> queryData) {
