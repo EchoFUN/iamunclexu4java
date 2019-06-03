@@ -20,23 +20,23 @@
             <div class="post" id="post-${ post.id }">
                 <h2><a href="/post?id=${ post.id }">${ post.title }</a></h2>
                 <div class="post-meta">
-                    <span class="date">{{ post.formated }}</span>
+                    <span class="date">${ post.date }</span>
                     <span class="author">${ post.author }</span>
                     <span class="comments"><a href="javascript:;" title="${ post.title }">0</a></span>
                 </div>
-                <div class="post-content">{% autoescape off %}{{ post.content }}{% endautoescape %}</div>
+                <div class="post-content">${ post.content }</div>
             </div>
             </#list>
         </div>
         <#include "component/sidebar.ftl" >
         <div style="clear: both;"></div>
         <div class="pagination clearfix">
-            {% if has_next %}
-            <a style="float: right;" href="/?p={{ current|add:1 }}">下一页</a>
-            {% endif %}
-            {% if has_prev %}
-            <a href="/?p={{ current|add:-1 }}">上一页</a>
-            {% endif %}
+            <#if has_next >
+            <a style="float: right;" href="/?p=${ current+1 }">下一页</a>
+            </#if>
+            <#if has_prev >
+            <a href="/?p=${ current-1 }">上一页</a>
+            </#if>
         </div>
     </div>
 </div>

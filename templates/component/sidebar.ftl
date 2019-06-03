@@ -29,11 +29,11 @@
 	<div class="widget">
 		<h3>找个地方瞎 BB</h3>
 		<ul>
-			{% for blog in microblogs %}
+			<#list microblogs as blog>
 			<li>
-				{{ blog.text }}
+				${ blog.text }
 			</li>
-			{% endfor %}
+			</#list>
 		</ul>
 	</div>
 
@@ -41,11 +41,11 @@
 	<div class="widget">
 		<h3>近期文章</h3>
 		<ul>
-			{% for post in recent_post %}
+			<#list recent_post as post>
 			<li>
-				<a href="/post?id={{ post.id }}">{{ post.title|truncatechars:"22" }}</a>
+				<a href="/post?id=${ post.id }">${ post.title }</a>
 			</li>
-			{% endfor %}
+			</#list>
 		</ul>
 	</div>
 
@@ -65,11 +65,11 @@
 	<div class="widget">
 		<h3>友情链接</h3>
 		<ul>
-			{% for li in link %}
+			<#list links as link>
 			<li>
-				<a href="javascript:;">{{ li.title }}</a>
+				<a href="javascript:;">${ link.title }</a>
 			</li>
-			{% endfor %}
+			</#list>
 		</ul>
 	</div>
 </div>

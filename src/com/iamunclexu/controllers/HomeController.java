@@ -1,7 +1,9 @@
 package com.iamunclexu.controllers;
 
 import com.iamunclexu.confs.TemplateConf;
+import com.iamunclexu.database.ModelLink;
 import com.iamunclexu.database.ModelMenu;
+import com.iamunclexu.database.ModelMicroBlogs;
 import com.iamunclexu.database.ModelPost;
 
 import org.slf4j.Logger;
@@ -9,6 +11,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,17 +34,48 @@ public class HomeController extends Controller {
 
     @Override
     public HttpResponse process(HttpRequest request) {
-        String output;
+        Map<String, Object> root = new HashMap<>();
 
-        int pageer;
+        String output;
+        ModelPost modelPost = new ModelPost();
+
+        int pager;
         try {
-            pageer = Integer.parseInt(queryData.get("p"));
+            pager = Integer.parseInt(queryData.get("p"));
         } catch (Exception e) {
-            pageer = 0;
+            pager = 0;
         }
-        int starter = pageer * PAGE_COUNT;
-        List<Map<String, String>> posts = (new ModelPost()).fetchPostsByPager(starter);
-        List<Map<String, String>> menus = (new ModelMenu()).fetchMenus();
+        int starter = pager * PAGE_COUNT;
+        List<Map<String, String>> posts = modelPost.fetchPostsByPager(starter);
+
+        for (int i = 0; i < posts.size(); i++) {
+            Map<String, String> post = posts.get(i);
+            search:
+            for (String key : post.keySet()) {
+                if (key == "date") {
+                    SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月dd日");
+                    Date date = new Date(Long.parseLong(post.get("date")));
+                    post.put("date", sf.format(date));
+                    break search;
+                }
+            }
+        }
+        root.put("posts", posts);
+        root.put("menus", (new ModelMenu()).fetchMenus());
+        root.put("microblogs", (new ModelMicroBlogs()).fetchMicroBlogs());
+        root.put("links", (new ModelLink()).fetchLinks());
+        root.put("recent_post", modelPost.fetchRecentPost());
+
+        int counter = modelPost.fetchPostCount();
+        if ((pager + 1) * PAGE_COUNT <= counter) {
+            root.put("has_next", true);
+            root.put("has_prev", false);
+        }
+        if ((pager) != 0) {
+            root.put("has_prev", true);
+            root.put("has_next", false);
+        }
+        root.put("current", pager);
 
         Configuration configuration = TemplateConf.fetchConfiguration();
         Template template = null;
@@ -49,10 +84,6 @@ public class HomeController extends Controller {
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
-
-        Map<String, List<Map<String, String>>> root = new HashMap<>();
-        root.put("posts", posts);
-        root.put("menus", menus);
         StringWriter stringWriter = new StringWriter();
         try {
             template.process(root, stringWriter);
