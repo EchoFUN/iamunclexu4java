@@ -4,6 +4,7 @@ import com.iamunclexu.controllers.Controller;
 import com.iamunclexu.controllers.HelloworldController;
 import com.iamunclexu.controllers.HomeController;
 import com.iamunclexu.controllers.NotFoundController;
+import com.iamunclexu.controllers.PostController;
 import com.iamunclexu.controllers.StaticController;
 import com.iamunclexu.utils.Utils;
 
@@ -14,6 +15,7 @@ import java.util.regex.Pattern;
 
 import static com.iamunclexu.confs.RequestUrl.URL_HELLO_WORLD;
 import static com.iamunclexu.confs.RequestUrl.URL_HOME;
+import static com.iamunclexu.confs.RequestUrl.URL_POST_DETAILS;
 
 public class RequestConf {
 
@@ -32,7 +34,7 @@ public class RequestConf {
 
     public void init() {
         requestContainer.put(URL_HOME, new HomeController());
-        requestContainer.put(URL_HELLO_WORLD, new HelloworldController());
+        requestContainer.put(URL_POST_DETAILS, new PostController());
         staticController = new StaticController();
         notFoundController = new NotFoundController();
     }

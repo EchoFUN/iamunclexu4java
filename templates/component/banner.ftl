@@ -9,7 +9,7 @@
 <div class="navigator">
 	<ul>
 		<#list menus as menu>
-		<li <#if '/' == menu.url>class="active" ></#if>
+		<li <#if '/' == menu.url>class="active"</#if>>
 			<a href="${ menu.url }">${ menu.title }</a>
 		</li>
 		</#list>
