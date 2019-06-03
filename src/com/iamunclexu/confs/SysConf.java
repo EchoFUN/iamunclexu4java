@@ -29,4 +29,6 @@ public class SysConf {
         databaseInfo.put(CONNECTION_POOL_SIZE, "100");
         return databaseInfo;
     }
+
+    public static int PAGE_COUNT =  10;
 }

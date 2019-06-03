@@ -23,6 +23,8 @@ import io.netty.handler.codec.http.HttpResponse;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 
+import static com.iamunclexu.confs.SysConf.PAGE_COUNT;
+
 public class HomeController extends Controller {
     private static Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
 
@@ -30,13 +32,14 @@ public class HomeController extends Controller {
     public HttpResponse process(HttpRequest request) {
         String output;
 
-        String pager = queryData.get("p");
-        LOGGER.info("Current pager is : " + pager);
-
-
-
-
-        List<Map<String, String>> posts = (new ModelPost()).fetchPosts();
+        int pageer;
+        try {
+            pageer = Integer.parseInt(queryData.get("p"));
+        } catch (Exception e) {
+            pageer = 0;
+        }
+        int starter = pageer * PAGE_COUNT;
+        List<Map<String, String>> posts = (new ModelPost()).fetchPostsByPager(starter);
         List<Map<String, String>> menus = (new ModelMenu()).fetchMenus();
 
         Configuration configuration = TemplateConf.fetchConfiguration();

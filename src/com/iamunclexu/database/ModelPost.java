@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.iamunclexu.confs.SysConf.PAGE_COUNT;
+
 public class ModelPost {
     private static Logger LOGGER = LoggerFactory.getLogger(ModelPost.class);
 
@@ -19,7 +21,7 @@ public class ModelPost {
     Statement statement = null;
     ResultSet resultSet = null;
 
-    public List<Map<String, String>> fetchPosts() {
+    public List<Map<String, String>> fetchPostsByPager(int starter) {
         List<Map<String, String>> posts = new ArrayList();
 
         try {
@@ -27,7 +29,7 @@ public class ModelPost {
             statement = connection.createStatement();
 
             // ModelPost Data .
-            resultSet = statement.executeQuery("select id, title, content, author from post");
+            resultSet = statement.executeQuery("select id, title, content, author from post where visiable = 1 order by date desc  limit " + PAGE_COUNT + " offset " + starter);
             while (resultSet.next()) {
                 Map<String, String> fieldDataSet = new HashMap<>();
                 fieldDataSet.put("id", String.valueOf(resultSet.getInt("id")));
