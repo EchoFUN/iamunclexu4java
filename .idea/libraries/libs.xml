@@ -1,8 +1,14 @@
 <component name="libraryTable">
   <library name="libs">
     <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/com/iamunclexu/libs/freemarker.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/iamunclexu/libs/mysql/lib/c3p0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/iamunclexu/libs/mysql/lib/protobuf.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/iamunclexu/libs/mysql/lib/slf4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/iamunclexu/libs/mysql/mysql.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/com/iamunclexu/libs/netty.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/com/iamunclexu/libs/rxjava.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/iamunclexu/libs/slf4j-simple.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

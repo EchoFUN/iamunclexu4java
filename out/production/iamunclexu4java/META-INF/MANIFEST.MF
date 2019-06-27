@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: freemarker.jar slf4j.jar c3p0.jar protobuf.jar netty.jar r
+ xjava.jar mysql.jar slf4j-simple.jar
+Main-Class: com.iamunclexu.service.Server
+

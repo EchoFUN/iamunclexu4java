@@ -10,7 +10,7 @@ public class Constant {
     public static String DEVELOPMENT_ENV_FLAG = "--dev";
     public static String PRODUCTION_ENV_FLAG = "--prod";
 
-    public static String TEMPLATE_DOCUMENT = "templates";
+    public static String TEMPLATE_DOCUMENT = "/templates";
 
 
     public static String CONTENT_TYPE_HTML = "text/html; charset=UTF-8";

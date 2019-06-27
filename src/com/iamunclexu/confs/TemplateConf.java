@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.IOException;
 
+import freemarker.cache.FileTemplateLoader;
 import freemarker.template.Configuration;
 
 import static com.iamunclexu.confs.Constant.TEMPLATE_DOCUMENT;
@@ -27,7 +28,10 @@ public class TemplateConf {
     public void init() {
         configuration = new Configuration();
         try {
-            configuration.setDirectoryForTemplateLoading(new File(TEMPLATE_DOCUMENT));
+            String templatePath = Thread.currentThread().getContextClassLoader().getResource("").getPath() + TEMPLATE_DOCUMENT;
+
+            LOGGER.info("Template dir is : " + templatePath);
+            configuration.setTemplateLoader(new FileTemplateLoader(new File(templatePath)));
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
         }

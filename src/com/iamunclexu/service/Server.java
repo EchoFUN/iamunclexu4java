@@ -1,25 +1,22 @@
 /**
  * Main Method of the service .
  *
- *
- *
- *
- *
  * @author XU Kai(xukai.ken@gmail.com)
  */
 
 package com.iamunclexu.service;
 
 import com.iamunclexu.confs.RequestConf;
+import com.iamunclexu.confs.SysConf;
 import com.iamunclexu.confs.TemplateConf;
 import com.iamunclexu.database.DBUtils;
 import com.iamunclexu.http.HttpHandler;
+import com.iamunclexu.utils.ArrayUtils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
@@ -29,6 +26,9 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpRequestDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
+
+import static com.iamunclexu.confs.Constant.PRODUCTION_ENV_FLAG;
+import static com.iamunclexu.confs.SysConf.WEB_PORT;
 
 public class Server {
     private static Logger LOGGER = LoggerFactory.getLogger(Server.class);
@@ -40,14 +40,13 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        if (args.length != 1) {
-            LOGGER.error("No any of the port specified !");
-            return;
+        if (ArrayUtils.contains(args, PRODUCTION_ENV_FLAG)) {
+            SysConf.build = PRODUCTION_ENV_FLAG;
         }
-        int port = Integer.parseInt(args[0]);
+
         init();
-        new Server(port).start();
-        LOGGER.info("Service started at the port of " + port);
+        new Server(WEB_PORT).start();
+        LOGGER.info("Service started at the port of " + WEB_PORT);
     }
 
     public static void init() {

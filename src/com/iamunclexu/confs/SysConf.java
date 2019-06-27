@@ -1,6 +1,5 @@
 package com.iamunclexu.confs;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,9 +14,7 @@ public class SysConf {
 
     public static String build = DEVELOPMENT_ENV_FLAG;
 
-    public static int WEB_PORT = 8082;
-
-    public static String WEB_ROOT = java.lang.System.getProperty("user.dir") + File.separator + "webroot";
+    public static int WEB_PORT = 8001;
 
     private static Map<String, String> databaseInfo = new HashMap<>();
 
