@@ -33,10 +33,6 @@ public abstract class Controller {
         return builder.toString();
     }
 
-    public String render(String tpl) {
-        return render(tpl, null);
-    }
-
     public void setQueryData(Map<String, String> queryData) {
         this.queryData = queryData;
     }

@@ -19,6 +19,7 @@ import io.netty.handler.codec.http.HttpResponse;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 
+import static com.iamunclexu.confs.SysConf.FRONTEND_ROOT;
 import static io.netty.handler.codec.http.HttpHeaderNames.CONTENT_TYPE;
 
 public class StaticController extends Controller {
@@ -28,8 +29,7 @@ public class StaticController extends Controller {
     public HttpResponse process(HttpRequest request) {
         String uri = request.getUri();
 
-        String basePath = System.getProperty("user.dir");
-        File file = new File(basePath + uri);
+        File file = new File(FRONTEND_ROOT + uri);
 
         HttpResponseStatus httpResponseStatus = HttpResponseStatus.OK;
         String linesTxt = "";

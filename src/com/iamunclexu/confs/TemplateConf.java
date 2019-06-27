@@ -28,7 +28,7 @@ public class TemplateConf {
     public void init() {
         configuration = new Configuration();
         try {
-            String templatePath = Thread.currentThread().getContextClassLoader().getResource("").getPath() + TEMPLATE_DOCUMENT;
+            String templatePath = SysConf.FRONTEND_ROOT + TEMPLATE_DOCUMENT;
 
             LOGGER.info("Template dir is : " + templatePath);
             configuration.setTemplateLoader(new FileTemplateLoader(new File(templatePath)));

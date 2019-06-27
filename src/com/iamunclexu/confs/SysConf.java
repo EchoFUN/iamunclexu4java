@@ -12,9 +12,11 @@ import static com.iamunclexu.confs.Constant.USERNAME;
 
 public class SysConf {
 
-    public static String build = DEVELOPMENT_ENV_FLAG;
+    public static String build = PRODUCTION_ENV_FLAG;
 
     public static int WEB_PORT = 8001;
+
+    public static String FRONTEND_ROOT = (build.equals(PRODUCTION_ENV_FLAG) ? "/frontend" : "/Users/xukai/Documents/workspace/iamunclexu4java");
 
     private static Map<String, String> databaseInfo = new HashMap<>();
 
