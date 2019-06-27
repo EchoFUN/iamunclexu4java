@@ -1,0 +1,1 @@
+scp -r templates static root@172.105.192.96:/frontend
