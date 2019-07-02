@@ -23,6 +23,7 @@ public class AboutController extends Controller {
         root.put("microblogs", (new MicroBlogsModel()).fetchMicroBlogs());
         root.put("links", (new LinkModel()).fetchLinks());
         root.put("recent_post", (new PostModel()).fetchRecentPost());
+        root.put("url", "/about");
         return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, Unpooled.wrappedBuffer(render("about.ftl", root).getBytes()));
     }
 }

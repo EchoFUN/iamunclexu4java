@@ -2,12 +2,9 @@ package com.iamunclexu.http;
 
 import com.iamunclexu.confs.RequestConf;
 import com.iamunclexu.controllers.Controller;
-import com.iamunclexu.utils.Utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.activation.MimetypesFileTypeMap;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -16,10 +13,7 @@ import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.HttpHeaderValues;
 import io.netty.handler.codec.http.HttpHeaders;
 
-import static com.iamunclexu.confs.Constant.CONTENT_TYPE_CSS;
 import static com.iamunclexu.confs.Constant.CONTENT_TYPE_HTML;
-import static com.iamunclexu.confs.Constant.CONTENT_TYPE_IMAGE_JPG;
-import static com.iamunclexu.confs.Constant.CONTENT_TYPE_JAVASCRIPT;
 import static io.netty.handler.codec.http.HttpHeaderNames.CONTENT_TYPE;
 import static io.netty.handler.codec.rtsp.RtspHeaderNames.CONNECTION;
 import static io.netty.handler.codec.rtsp.RtspHeaderNames.CONTENT_LENGTH;

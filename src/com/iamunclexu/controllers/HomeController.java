@@ -53,6 +53,7 @@ public class HomeController extends Controller {
         root.put("microblogs", (new MicroBlogsModel()).fetchMicroBlogs());
         root.put("links", (new LinkModel()).fetchLinks());
         root.put("recent_post", postModel.fetchRecentPost());
+        root.put("url", "/");
 
         int counter = postModel.fetchPostCount();
         if ((pager + 1) * PAGE_COUNT <= counter) {
