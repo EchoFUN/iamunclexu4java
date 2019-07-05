@@ -1,5 +1,6 @@
 package com.iamunclexu.controllers;
 
+import com.iamunclexu.database.CommentModel;
 import com.iamunclexu.database.LinkModel;
 import com.iamunclexu.database.MenuModel;
 import com.iamunclexu.database.MicroBlogsModel;
@@ -8,6 +9,7 @@ import com.iamunclexu.database.PostModel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.netty.buffer.Unpooled;
@@ -40,6 +42,7 @@ public class PostController extends Controller {
         root.put("microblogs", (new MicroBlogsModel()).fetchMicroBlogs());
         root.put("links", (new LinkModel()).fetchLinks());
         root.put("recent_post", postModel.fetchRecentPost());
+        root.put("comments", (new CommentModel()).fetchCListByPost(postId));
         return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, Unpooled.wrappedBuffer(render("post.ftl", root).getBytes()));
     }
 }
