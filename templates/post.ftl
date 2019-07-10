@@ -19,17 +19,19 @@
     <div class="wrapper">
         <div class="wrapper-inner clearfix">
             <div class="main">
-                <h1>${ post_details.title }</h1>
-                <div class="post-meta">
-                    <span class="date">${ post_details.date }</span>
-                    <span class="author">${ post_details.author }</span>
-                    <span class="comments">
-                        <a href="javascript:;" title="${ post_details.author }">0</a>
-                    </span>
-                </div>
-                <div class="post-content">${ post_details.content }</div>
-                <!-- 评论内容 -->
-                <div class="comments-area" id="comments-area">
+                <#if post_details?exists>
+                    <h1>${ post_details.title }</h1>
+                    <div class="post-meta">
+                        <span class="date">${ post_details.date }</span>
+                        <span class="author">${ post_details.author }</span>
+                        <span class="comments">
+                            <a href="javascript:;" title="${ post_details.author }">0</a>
+                        </span>
+                    </div>
+                    <div class="post-content">${ post_details.content }</div>
+
+                    <!-- 评论内容 -->
+                    <div class="comments-area" id="comments-area">
                     <#if comments?size gt 0 >
                     <h3 id="comments-title">关于“${ post_details.title }”的${ comments?size }个想法</h3>
                     <div class="comment-list" id="comment-list">
@@ -87,6 +89,7 @@
                         </div>
                     </div>
                 </div>
+                </#if>
             </div>
             <#include "component/sidebar.ftl">
         </div>

@@ -28,16 +28,17 @@ public class PostController extends Controller {
         int postId = Integer.parseInt(queryData.get("id"));
 
         Map<String, String> post = postModel.fetchPostByID(postId);
-        for (String key : post.keySet()) {
-            if (key == "date") {
-                SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月dd日");
-                Date date = new Date(Long.parseLong(post.get("date")));
-                post.put("date", sf.format(date));
-                break;
+        if (post != null) {
+            for (String key : post.keySet()) {
+                if (key == "date") {
+                    SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月dd日");
+                    Date date = new Date(Long.parseLong(post.get("date")));
+                    post.put("date", sf.format(date));
+                    break;
+                }
             }
+            root.put("post_details", post);
         }
-
-        root.put("post_details", post);
         root.put("menus", (new MenuModel()).fetchMenus());
         root.put("microblogs", (new MicroBlogsModel()).fetchMicroBlogs());
         root.put("links", (new LinkModel()).fetchLinks());

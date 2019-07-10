@@ -134,7 +134,7 @@ public class PostModel {
             statement = connection.createStatement();
 
             // PostModel Data .
-            resultSet = statement.executeQuery("select id, title, content, date, author from post where id = " + id);
+            resultSet = statement.executeQuery("select id, title, content, date, author from post where id = " + id + " and visiable = 1");
             while (resultSet.next()) {
                 Map<String, String> fieldDataSet = new HashMap<>();
                 fieldDataSet.put("id", String.valueOf(resultSet.getInt("id")));
