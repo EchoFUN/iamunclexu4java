@@ -25,13 +25,19 @@ public class CommentModel {
             connection = DBUtils.getConnection();
             statement = connection.createStatement();
 
+            String webside = queryData.get("webside");
+            if (webside.equals("")) {
+                webside = "null";
+            } else {
+                webside = "\"" + webside + "\"";
+            }
             int status = statement.executeUpdate("INSERT INTO `comment` (`id`, `pid`, `name`, `email`, `webside`, `content`, `date`, `approved`) VALUES (" +
                     "null , " +
-                    queryData.get("pid") + ", " +
-                    queryData.get("author") + ", " +
-                    queryData.get("mail") + ", " +
-                    queryData.get("webside") + ", " +
-                    queryData.get("comment") + ", " +
+                    queryData.get("pid") + ", \"" +
+                    queryData.get("author") + "\", \"" +
+                    queryData.get("mail") + "\", " +
+                    webside + ", \"" +
+                    queryData.get("comment") + "\", " +
                     System.currentTimeMillis() + ", '0');"
             );
             result = String.valueOf(status);

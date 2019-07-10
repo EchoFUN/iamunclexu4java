@@ -26,7 +26,7 @@ public class CommentController extends Controller {
         if (flagger.equals(SQL_UPDATED)) {
             result = "{\"code\":0}";
         } else {
-            result = "{\"code\":1,msg:\"\"}";
+            result = "{\"code\":1,msg:\"" + flagger + "\"}";
         }
         response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, Unpooled.wrappedBuffer(result.getBytes()));
         response.headers().set(CONTENT_TYPE, "application/json");

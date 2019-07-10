@@ -7,8 +7,15 @@ import com.iamunclexu.controllers.HomeController;
 import com.iamunclexu.controllers.NotFoundController;
 import com.iamunclexu.controllers.PostController;
 import com.iamunclexu.controllers.StaticController;
+import com.iamunclexu.database.LinkModel;
 import com.iamunclexu.utils.Utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -20,6 +27,7 @@ import static com.iamunclexu.confs.RequestUrl.URL_HOME;
 import static com.iamunclexu.confs.RequestUrl.URL_POST_DETAILS;
 
 public class RequestConf {
+    private static Logger LOGGER = LoggerFactory.getLogger(RequestConf.class);
 
     Map<String, Controller> requestContainer = new HashMap<>();
 
@@ -58,13 +66,18 @@ public class RequestConf {
     public Map<String, String> extractQuery(String uri) {
         Map<String, String> queryMap = new HashMap<>();
 
+        String decodedUri = null;
+        try {
+            decodedUri = URLDecoder.decode(uri, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            LOGGER.error(e.getMessage());
+        }
         Pattern pattern = Pattern.compile("([^?=&]+)(=([^&]*))?");
-        Matcher matcher = pattern.matcher(uri);
+        Matcher matcher = pattern.matcher(decodedUri);
         while (matcher.find()) {
             String key = matcher.group(1);
             String value = matcher.group(3);   // TODO In case of any inject Risks !
             if (key != null && value != null) {
-
 
 
                 queryMap.put(key, value);
