@@ -25,7 +25,7 @@
                         <span class="date">${ post_details.date }</span>
                         <span class="author">${ post_details.author }</span>
                         <span class="comments">
-                            <a href="javascript:;" title="${ post_details.author }">0</a>
+                            <a href="javascript:;" title="${ post_details.author }">${ post_details.counter }</a>
                         </span>
                     </div>
                     <div class="post-content">${ post_details.content }</div>
@@ -44,7 +44,7 @@
                                 <img height="38" width="38" src="http://cdn.v2ex.com/static/img/avatar_normal.png"/>
                             </div>
                             <div class="comment-info">
-                                <div class="name"><a href="">${ comment.name }</a>&nbsp;说：</div><div class="date">2018.02.10</div>
+                                <div class="name"><a href="">${ comment.name }</a>&nbsp;说：</div><div class="date">${ comment.formatted }</div>
                             </div>
                             <div class="clear"></div>
                             <div class="comment-content">${ comment.content }</div>

@@ -5,6 +5,7 @@ import com.iamunclexu.database.LinkModel;
 import com.iamunclexu.database.MenuModel;
 import com.iamunclexu.database.MicroBlogsModel;
 import com.iamunclexu.database.PostModel;
+import com.iamunclexu.utils.Utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,9 +47,7 @@ public class HomeController extends Controller {
             search:
             for (String key : post.keySet()) {
                 if (key == "date") {
-                    SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月dd日");
-                    Date date = new Date(Long.parseLong(post.get("date")));
-                    post.put("date", sf.format(date));
+                    post.put("date", Utils.dateFormatter(post.get("date")));
                     break search;
                 }
             }

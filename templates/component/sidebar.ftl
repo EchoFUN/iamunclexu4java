@@ -67,7 +67,7 @@
 		<ul>
 			<#list links as link>
 			<li>
-				<a href="javascript:;">${ link.title }</a>
+				<a href="${ link.url }">${ link.title }</a>
 			</li>
 			</#list>
 		</ul>

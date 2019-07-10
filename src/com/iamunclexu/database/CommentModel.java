@@ -95,12 +95,13 @@ public class CommentModel {
         try {
             connection = DBUtils.getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("select id, name, content from comment where approved = 1 and pid = " + postId);
+            resultSet = statement.executeQuery("select id, name, content, date from comment where approved = 1 and pid = " + postId);
             while (resultSet.next()) {
                 Map<String, String> fieldDataSet = new HashMap<>();
                 fieldDataSet.put("id", String.valueOf(resultSet.getInt("id")));
                 fieldDataSet.put("name", resultSet.getString("name"));
                 fieldDataSet.put("content", resultSet.getString("content"));
+                fieldDataSet.put("date", resultSet.getString("date"));
                 comments.add(fieldDataSet);
             }
 
