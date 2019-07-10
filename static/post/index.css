@@ -11,11 +11,15 @@
     background: url(/static/image/big-line.gif) 0 bottom no-repeat;
 }
 
+.respond {
+    margin-top: 5px;
+}
+
 .respond-content {
     padding: 10px 20px;
     background-color: #FAFAFA;
     border: 1px solid #E6E6E6;
-    margin-top: 0.5em;
+    margin-top: 5px;
     padding-bottom: 20px;
 }
 

@@ -52,7 +52,7 @@ public class StaticController extends Controller {
                 } catch (IOException e) {
                     LOGGER.error(e.getMessage());
                 }
-                linesTxt += lineTxt;
+                linesTxt += lineTxt + "\n";
             }
             try {
                 read.close();

@@ -35,19 +35,6 @@ public class HttpHandler extends SimpleChannelInboundHandler<FullHttpRequest> { 
         }
         headers.add(CONTENT_LENGTH, response.content().readableBytes());
         headers.add(CONNECTION, HttpHeaderValues.KEEP_ALIVE);
-        /*
-        if (Utils.isStaticUri(requestUri)) {
-            if (requestUri.contains(".js")) {
-                heads.set(CONTENT_TYPE, CONTENT_TYPE_JAVASCRIPT);
-            }
-            if (requestUri.contains(".css")) {
-                heads.set(CONTENT_TYPE, CONTENT_TYPE_CSS);
-            }
-            if (requestUri.contains(".jpg")) {
-                heads.set(CONTENT_TYPE, CONTENT_TYPE_IMAGE_JPG);
-            }
-        }
-        */
         ctx.write(response);
     }
 

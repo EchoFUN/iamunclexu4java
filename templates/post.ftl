@@ -10,6 +10,8 @@
     <head>
         <#include "component/head.ftl">
         <link rel="stylesheet" href="/static/post/index.css">
+        <script src="/static/lib/jquery.js" type="application/javascript"></script>
+        <script src="/static/post/index.js" type="application/javascript"></script>
     </head>
 
     <body>
@@ -52,7 +54,7 @@
                     <div id="respond" class="respond">
                         <h3 id="reply-title">回复</h3>
                         <div class="respond-content">
-                            <form id="respond-form" action="/" data-pid="<%= post.id %>">
+                            <form id="respond-form" action="/" data-pid="${ post_details.id }">
                                 <div class="item clearfix">
                                     <label for="author">姓名：</label>
                                     <div class="input">
