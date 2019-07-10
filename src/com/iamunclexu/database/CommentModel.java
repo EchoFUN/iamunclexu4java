@@ -28,10 +28,10 @@ public class CommentModel {
             int status = statement.executeUpdate("INSERT INTO `comment` (`id`, `pid`, `name`, `email`, `webside`, `content`, `date`, `approved`) VALUES (" +
                     "null , " +
                     queryData.get("pid") + ", " +
-                    queryData.get("name") + ", " +
-                    queryData.get("email") + ", " +
-                    queryData.get("website") + ", " +
-                    queryData.get("content") + ", " +
+                    queryData.get("author") + ", " +
+                    queryData.get("mail") + ", " +
+                    queryData.get("webside") + ", " +
+                    queryData.get("comment") + ", " +
                     System.currentTimeMillis() + ", '0');"
             );
             result = String.valueOf(status);
