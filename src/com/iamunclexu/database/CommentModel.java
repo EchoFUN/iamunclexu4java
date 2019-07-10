@@ -59,6 +59,34 @@ public class CommentModel {
         return result;
     }
 
+    public int queryCounterByPost(int postId) {
+        int counter = 0;
+
+        try {
+            connection = DBUtils.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("select count(*) from comment where approved = 1 and pid = " + postId);
+            while (resultSet.next()) {
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    DBUtils.releaseConnection(connection);
+                }
+            } catch (SQLException e) {
+                LOGGER.error(e.getMessage());
+            }
+        }
+        return counter;
+    }
 
     public List<Map<String, String>> fetchCListByPost(int postId) {
         List<Map<String, String>> comments = new ArrayList();

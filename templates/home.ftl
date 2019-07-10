@@ -22,7 +22,7 @@
                 <div class="post-meta">
                     <span class="date">${ post.date }</span>
                     <span class="author">${ post.author }</span>
-                    <span class="comments"><a href="javascript:;" title="${ post.title }">0</a></span>
+                    <span class="comments"><a href="javascript:;" title="${ post.title }">${ post.counter }</a></span>
                 </div>
                 <div class="post-content">${ post.content }</div>
             </div>

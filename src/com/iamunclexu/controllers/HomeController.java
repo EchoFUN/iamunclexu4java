@@ -1,5 +1,6 @@
 package com.iamunclexu.controllers;
 
+import com.iamunclexu.database.CommentModel;
 import com.iamunclexu.database.LinkModel;
 import com.iamunclexu.database.MenuModel;
 import com.iamunclexu.database.MicroBlogsModel;
@@ -22,10 +23,12 @@ import static com.iamunclexu.confs.SysConf.PAGE_COUNT;
 
 public class HomeController extends Controller {
 
+    private PostModel postModel = new PostModel();
+    private CommentModel commentModel = new CommentModel();
+
     @Override
     public HttpResponse process(HttpRequest request) {
         Map<String, Object> root = new HashMap<>();
-        PostModel postModel = new PostModel();
 
         int pager;
         try {
@@ -38,6 +41,8 @@ public class HomeController extends Controller {
 
         for (int i = 0; i < posts.size(); i++) {
             Map<String, String> post = posts.get(i);
+            post.put("counter", String.valueOf(commentModel.queryCounterByPost(Integer.parseInt(post.get("id")))));
+
             search:
             for (String key : post.keySet()) {
                 if (key == "date") {
