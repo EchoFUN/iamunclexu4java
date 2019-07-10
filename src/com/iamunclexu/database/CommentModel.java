@@ -65,8 +65,9 @@ public class CommentModel {
         try {
             connection = DBUtils.getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("select count(*) from comment where approved = 1 and pid = " + postId);
+            resultSet = statement.executeQuery("select count(*) as counter from comment where approved = 1 and pid = " + postId);
             while (resultSet.next()) {
+                counter = resultSet.getInt("counter");
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
