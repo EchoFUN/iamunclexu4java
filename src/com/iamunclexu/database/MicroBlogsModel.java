@@ -1,5 +1,7 @@
 package com.iamunclexu.database;
 
+import com.iamunclexu.utils.Utils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,11 +27,11 @@ public class MicroBlogsModel {
             connection = DBUtils.getConnection();
             statement = connection.createStatement();
 
-            resultSet = statement.executeQuery("select id, date, text from microblogs;");
+            resultSet = statement.executeQuery("select id, date, text from microblogs order by date desc ;");
             while (resultSet.next()) {
                 Map<String, String> fieldDataSet = new HashMap<>();
                 fieldDataSet.put("id", String.valueOf(resultSet.getInt("id")));
-                fieldDataSet.put("date", resultSet.getString("date"));
+                fieldDataSet.put("date", Utils.dateFormatter(resultSet.getString("date"), "yyyy.MM.dd HH:mm"));
                 fieldDataSet.put("text", resultSet.getString("text"));
                 microblogs.add(fieldDataSet);
             }

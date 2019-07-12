@@ -31,7 +31,7 @@
 		<ul>
 			<#list microblogs as blog>
 			<li>
-				${ blog.text }
+				${ blog.text }<br />@ ${ blog.date }
 			</li>
 			</#list>
 		</ul>
