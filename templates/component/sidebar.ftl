@@ -53,11 +53,11 @@
 	<div class="widget">
 		<h3>文章归档</h3>
 		<ul>
-			{% for archive in archived %}
+			<#list archived as archive >
 			<li>
-				<a href="javascript:;">{{ archive }}</a>
+				<a href="javascript:;">${ archive }</a>
 			</li>
-			{% endfor %}
+			</#list>
 		</ul>
 	</div>
 

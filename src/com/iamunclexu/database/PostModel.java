@@ -1,5 +1,7 @@
 package com.iamunclexu.database;
 
+import com.iamunclexu.utils.Utils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,7 +61,6 @@ public class PostModel {
         }
         return posts;
     }
-
 
     public int fetchPostCount() {
         int counter = 0;
@@ -165,5 +166,38 @@ public class PostModel {
             return null;
         }
         return posts.get(0);
+    }
+
+    public List<String> fetchArchived() {
+        List<String> archived = new ArrayList<>();
+        try {
+            connection = DBUtils.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("select id, date from post where visiable = 1 order by date desc");
+
+            while (resultSet.next()) {
+                String stamp = Utils.dateFormatter(resultSet.getString("date"), "yyyy年MM月");
+                if (!archived.contains(stamp)) {
+                    archived.add(stamp);
+                }
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    DBUtils.releaseConnection(connection);
+                }
+            } catch (SQLException e) {
+                LOGGER.error(e.getMessage());
+            }
+        }
+        return archived;
     }
 }

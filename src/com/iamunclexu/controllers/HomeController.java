@@ -57,6 +57,7 @@ public class HomeController extends Controller {
         root.put("microblogs", (new MicroBlogsModel()).fetchMicroBlogs());
         root.put("links", (new LinkModel()).fetchLinks());
         root.put("recent_post", postModel.fetchRecentPost());
+        root.put("archived", postModel.fetchArchived());
         root.put("url", "/");
 
         int counter = postModel.fetchPostCount();

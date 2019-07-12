@@ -50,6 +50,7 @@ public class PostController extends Controller {
         root.put("microblogs", (new MicroBlogsModel()).fetchMicroBlogs());
         root.put("links", (new LinkModel()).fetchLinks());
         root.put("recent_post", postModel.fetchRecentPost());
+        root.put("archived", postModel.fetchArchived());
         root.put("comments", comments);
         return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, Unpooled.wrappedBuffer(render("post.ftl", root).getBytes()));
     }
