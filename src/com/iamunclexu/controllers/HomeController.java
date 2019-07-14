@@ -64,10 +64,11 @@ public class HomeController extends Controller {
         if ((pager + 1) * PAGE_COUNT <= counter) {
             root.put("has_next", true);
             root.put("has_prev", false);
-        }
-        if ((pager) != 0) {
-            root.put("has_prev", true);
+        } else {
             root.put("has_next", false);
+        }
+        if (pager != 0) {
+            root.put("has_prev", true);
         }
         root.put("current", pager);
         return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, Unpooled.wrappedBuffer(render("home.ftl", root).getBytes()));
