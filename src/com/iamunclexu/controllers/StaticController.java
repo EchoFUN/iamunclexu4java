@@ -28,7 +28,7 @@ public class StaticController extends Controller {
 
     @Override
     public HttpResponse process(HttpRequest request) {
-        String uri = request.getUri();
+        String uri = request.uri();
 
         ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
         File file = new File(FRONTEND_ROOT + uri);
