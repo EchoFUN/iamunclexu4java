@@ -7,18 +7,15 @@
  *
  *
  *
- *
  * @author XU Kai(xukai.ken@gmail.com)
  */
 
 package com.iamunclexu.service
 
 import com.iamunclexu.confs.RequestConf
-import com.iamunclexu.confs.SysConf
 import com.iamunclexu.confs.TemplateConf
 import com.iamunclexu.database.DBUtils
 import com.iamunclexu.http.HttpHandler
-import com.iamunclexu.utils.ArrayUtils
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -34,7 +31,6 @@ import io.netty.handler.codec.http.HttpObjectAggregator
 import io.netty.handler.codec.http.HttpRequestDecoder
 import io.netty.handler.codec.http.HttpResponseEncoder
 
-import com.iamunclexu.confs.Constant.PRODUCTION_ENV_FLAG
 import com.iamunclexu.confs.SysConf.WEB_PORT
 
 class Server(private val port: Int) {

@@ -34,6 +34,7 @@ class TemplateConf {
                 return field
             }
 
+        @JvmStatic
         fun inst(): TemplateConf {
             return templateConf!!
         }
