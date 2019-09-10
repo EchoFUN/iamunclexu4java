@@ -50,7 +50,7 @@ class HttpHandler : SimpleChannelInboundHandler<FullHttpRequest>() { // 1
     override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable?) {
         LOGGER.info("exceptionCaught")
         cause?.printStackTrace()
-        ctx?.close()
+        ctx.close()
     }
 
     companion object {

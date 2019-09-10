@@ -72,7 +72,7 @@ class Server(private val port: Int) {
     }
 
     companion object {
-        private val LOGGER = LoggerFactory.getLogger(Server::class.java!!)
+        private val LOGGER = LoggerFactory.getLogger(Server::class.java)
 
         @JvmStatic
         fun main(args: Array<String>) {
