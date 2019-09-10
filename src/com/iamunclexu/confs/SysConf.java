@@ -30,5 +30,5 @@ public class SysConf {
         return databaseInfo;
     }
 
-    public static int PAGE_COUNT =  10;
+    public static int PAGE_COUNT = 10;
 }

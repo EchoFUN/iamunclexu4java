@@ -47,10 +47,6 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        if (ArrayUtils.contains(args, PRODUCTION_ENV_FLAG)) {
-            SysConf.build = PRODUCTION_ENV_FLAG;
-        }
-
         init();
         new Server(WEB_PORT).start();
         LOGGER.info("Service started at the port of " + WEB_PORT);

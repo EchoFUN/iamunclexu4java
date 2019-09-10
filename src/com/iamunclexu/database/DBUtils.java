@@ -37,7 +37,7 @@ public class DBUtils {
         dataSource.setUser(databaseInfo.get(USERNAME));
         dataSource.setPassword(databaseInfo.get(PASSWORD));
 
-        dataSource.setMaxPoolSize(Integer.valueOf(databaseInfo.get(CONNECTION_POOL_SIZE)));
+        dataSource.setMaxPoolSize(Integer.parseInt(databaseInfo.get(CONNECTION_POOL_SIZE), 10));
     }
 
     public static void releaseConnection(Connection connection) {
