@@ -33,7 +33,6 @@ class DBUtils {
                 return field
             }
 
-        @JvmStatic
         fun inst(): DBUtils {
             return dbUtils!!
         }

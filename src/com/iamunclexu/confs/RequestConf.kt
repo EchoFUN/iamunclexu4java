@@ -103,7 +103,6 @@ class RequestConf {
                 return field
             }
 
-        @JvmStatic
         fun inst(): RequestConf {
             return requestMap!!
         }
