@@ -10,6 +10,6 @@ import io.netty.handler.codec.http.HttpVersion;
 public class NotFoundController extends Controller {
     @Override
     public HttpResponse process(HttpRequest request) {
-        return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, Unpooled.wrappedBuffer("404".getBytes()));
+        return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.NOT_FOUND, Unpooled.wrappedBuffer("404".getBytes()));
     }
 }
