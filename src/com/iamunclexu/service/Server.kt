@@ -43,7 +43,7 @@ class Server(private val port: Int) {
         val bootstrap = ServerBootstrap()
         val masterGroup = NioEventLoopGroup()
         val slaveGroup = NioEventLoopGroup()
-        bootstrap.group(masterGroup, slaveGroup).channel(NioServerSocketChannel::class.java!!).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.SO_KEEPALIVE, java.lang.Boolean.TRUE)
+        bootstrap.group(masterGroup, slaveGroup).channel(NioServerSocketChannel::class.java).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.SO_KEEPALIVE, java.lang.Boolean.TRUE)
 
         bootstrap.childHandler(object : ChannelInitializer<SocketChannel>() {
             public override fun initChannel(ch: SocketChannel) {
