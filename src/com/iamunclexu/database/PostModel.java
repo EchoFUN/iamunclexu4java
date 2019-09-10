@@ -27,7 +27,7 @@ public class PostModel {
         List<Map<String, String>> posts = new ArrayList();
 
         try {
-            connection = DBUtils.getConnection();
+            connection = DBUtils.Companion.getConnection();
             statement = connection.createStatement();
 
             // PostModel Data .
@@ -53,7 +53,7 @@ public class PostModel {
                     statement.close();
                 }
                 if (connection != null) {
-                    DBUtils.releaseConnection(connection);
+                    DBUtils.Companion.releaseConnection(connection);
                 }
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());
@@ -65,7 +65,7 @@ public class PostModel {
     public int fetchPostCount() {
         int counter = 0;
         try {
-            connection = DBUtils.getConnection();
+            connection = DBUtils.Companion.getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select count(*) as counter from post where visiable = 1");
             while (resultSet.next()) {
@@ -82,7 +82,7 @@ public class PostModel {
                     statement.close();
                 }
                 if (connection != null) {
-                    DBUtils.releaseConnection(connection);
+                    DBUtils.Companion.releaseConnection(connection);
                 }
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());
@@ -95,7 +95,7 @@ public class PostModel {
         List<Map<String, String>> posts = new ArrayList();
 
         try {
-            connection = DBUtils.getConnection();
+            connection = DBUtils.Companion.getConnection();
             statement = connection.createStatement();
 
             // PostModel Data .
@@ -118,7 +118,7 @@ public class PostModel {
                     statement.close();
                 }
                 if (connection != null) {
-                    DBUtils.releaseConnection(connection);
+                    DBUtils.Companion.releaseConnection(connection);
                 }
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());
@@ -131,7 +131,7 @@ public class PostModel {
         List<Map<String, String>> posts = new ArrayList();
 
         try {
-            connection = DBUtils.getConnection();
+            connection = DBUtils.Companion.getConnection();
             statement = connection.createStatement();
 
             // PostModel Data .
@@ -156,7 +156,7 @@ public class PostModel {
                     statement.close();
                 }
                 if (connection != null) {
-                    DBUtils.releaseConnection(connection);
+                    DBUtils.Companion.releaseConnection(connection);
                 }
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());
@@ -171,7 +171,7 @@ public class PostModel {
     public List<String> fetchArchived() {
         List<String> archived = new ArrayList<>();
         try {
-            connection = DBUtils.getConnection();
+            connection = DBUtils.Companion.getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select id, date from post where visiable = 1 order by date desc");
 
@@ -192,7 +192,7 @@ public class PostModel {
                     statement.close();
                 }
                 if (connection != null) {
-                    DBUtils.releaseConnection(connection);
+                    DBUtils.Companion.releaseConnection(connection);
                 }
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());

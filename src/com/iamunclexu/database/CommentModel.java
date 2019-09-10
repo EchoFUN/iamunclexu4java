@@ -22,7 +22,7 @@ public class CommentModel {
     public String saveComment(Map<String, String> queryData) {
         String result;
         try {
-            connection = DBUtils.getConnection();
+            connection = DBUtils.Companion.getConnection();
             statement = connection.createStatement();
 
             String webside = queryData.get("webside");
@@ -50,7 +50,7 @@ public class CommentModel {
                     statement.close();
                 }
                 if (connection != null) {
-                    DBUtils.releaseConnection(connection);
+                    DBUtils.Companion.releaseConnection(connection);
                 }
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());
@@ -63,7 +63,7 @@ public class CommentModel {
         int counter = 0;
 
         try {
-            connection = DBUtils.getConnection();
+            connection = DBUtils.Companion.getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select count(*) as counter from comment where approved = 1 and pid = " + postId);
             while (resultSet.next()) {
@@ -80,7 +80,7 @@ public class CommentModel {
                     statement.close();
                 }
                 if (connection != null) {
-                    DBUtils.releaseConnection(connection);
+                    DBUtils.Companion.releaseConnection(connection);
                 }
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());
@@ -93,7 +93,7 @@ public class CommentModel {
         List<Map<String, String>> comments = new ArrayList();
 
         try {
-            connection = DBUtils.getConnection();
+            connection = DBUtils.Companion.getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select id, name, content, date from comment where approved = 1 and pid = " + postId);
             while (resultSet.next()) {
@@ -116,7 +116,7 @@ public class CommentModel {
                     statement.close();
                 }
                 if (connection != null) {
-                    DBUtils.releaseConnection(connection);
+                    DBUtils.Companion.releaseConnection(connection);
                 }
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());

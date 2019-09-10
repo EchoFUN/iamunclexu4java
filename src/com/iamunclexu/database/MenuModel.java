@@ -22,7 +22,7 @@ public class MenuModel {
     public List<Map<String, String>> fetchMenus() {
         List<Map<String, String>> menus = new ArrayList<>();
         try {
-            connection = DBUtils.getConnection();
+            connection = DBUtils.Companion.getConnection();
             statement = connection.createStatement();
 
             resultSet = statement.executeQuery("select id, title, url from menu");
@@ -45,7 +45,7 @@ public class MenuModel {
                     statement.close();
                 }
                 if (connection != null) {
-                    DBUtils.releaseConnection(connection);
+                    DBUtils.Companion.releaseConnection(connection);
                 }
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());

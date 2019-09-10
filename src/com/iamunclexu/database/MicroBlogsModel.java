@@ -24,7 +24,7 @@ public class MicroBlogsModel {
     public List<Map<String, String>> fetchMicroBlogs() {
         List<Map<String, String>> microblogs = new ArrayList<>();
         try {
-            connection = DBUtils.getConnection();
+            connection = DBUtils.Companion.getConnection();
             statement = connection.createStatement();
 
             resultSet = statement.executeQuery("select id, date, text from microblogs order by date desc ;");
@@ -46,7 +46,7 @@ public class MicroBlogsModel {
                     statement.close();
                 }
                 if (connection != null) {
-                    DBUtils.releaseConnection(connection);
+                    DBUtils.Companion.releaseConnection(connection);
                 }
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());

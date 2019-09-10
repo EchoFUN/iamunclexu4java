@@ -23,15 +23,19 @@ class TemplateConf {
     }
 
     companion object {
+        lateinit var configuration: Configuration
 
         private val LOGGER = LoggerFactory.getLogger(TemplateConf::class.java)
-        private lateinit var templateConf: TemplateConf
-
-        private lateinit var configuration: Configuration
+        private var templateConf: TemplateConf? = null
+            get() {
+                if (field == null) {
+                    field = TemplateConf()
+                }
+                return field
+            }
 
         fun inst(): TemplateConf {
-            templateConf = TemplateConf()
-            return templateConf
+            return templateConf!!
         }
 
         fun fetchConfiguration(): Configuration? {

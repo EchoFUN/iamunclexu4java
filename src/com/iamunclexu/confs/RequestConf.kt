@@ -96,12 +96,15 @@ class RequestConf {
         private val LOGGER = LoggerFactory.getLogger(RequestConf::class.java)
 
         private var requestMap: RequestConf? = null
+            get() {
+                if (field == null) {
+                    field = RequestConf()
+                }
+                return field
+            }
 
         fun inst(): RequestConf {
-            if (requestMap == null) {
-                requestMap = RequestConf()
-            }
-            return requestMap as RequestConf
+            return requestMap!!
         }
     }
 }

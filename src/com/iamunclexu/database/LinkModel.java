@@ -22,7 +22,7 @@ public class LinkModel {
     public List<Map<String, String>> fetchLinks() {
         List<Map<String, String>> links = new ArrayList<>();
         try {
-            connection = DBUtils.getConnection();
+            connection = DBUtils.Companion.getConnection();
             statement = connection.createStatement();
 
             resultSet = statement.executeQuery("select id, title, url from link");
@@ -45,7 +45,7 @@ public class LinkModel {
                     statement.close();
                 }
                 if (connection != null) {
-                    DBUtils.releaseConnection(connection);
+                    DBUtils.Companion.releaseConnection(connection);
                 }
             } catch (SQLException e) {
                 LOGGER.error(e.getMessage());

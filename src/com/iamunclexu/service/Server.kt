@@ -81,7 +81,7 @@ class Server(private val port: Int) {
             LOGGER.info("Service started at the port of $WEB_PORT")
         }
 
-        fun init() {
+        private fun init() {
             DBUtils.inst().init()
             RequestConf.inst().init()
             TemplateConf.inst().init()
