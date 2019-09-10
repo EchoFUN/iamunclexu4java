@@ -22,7 +22,7 @@ public abstract class Controller {
     public abstract HttpResponse process(HttpRequest request);
 
     public String render(String tpl, Map<String, Object> root) {
-        Configuration configuration = TemplateConf.fetchConfiguration();
+        Configuration configuration = TemplateConf.Companion.fetchConfiguration();
         StringWriter builder = new StringWriter();
 
         try {
