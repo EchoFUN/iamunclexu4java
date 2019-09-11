@@ -1,5 +1,6 @@
 package com.iamunclexu.confs
 
+import com.iamunclexu.confs.RequestUrl.*
 import com.iamunclexu.controllers.AboutController
 import com.iamunclexu.controllers.CommentController
 import com.iamunclexu.controllers.Controller
@@ -7,35 +8,28 @@ import com.iamunclexu.controllers.HomeController
 import com.iamunclexu.controllers.NotFoundController
 import com.iamunclexu.controllers.PostController
 import com.iamunclexu.controllers.StaticController
-import com.iamunclexu.database.LinkModel
+import com.iamunclexu.controllers.GeneralInfoController
 import com.iamunclexu.utils.Utils
 
-import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 import java.io.UnsupportedEncodingException
 import java.net.URLDecoder
-import java.nio.charset.StandardCharsets
 import java.util.HashMap
-import java.util.regex.Matcher
 import java.util.regex.Pattern
-
-import com.iamunclexu.confs.RequestUrl.URL_ABOUT
-import com.iamunclexu.confs.RequestUrl.URL_COMMENT
-import com.iamunclexu.confs.RequestUrl.URL_HOME
-import com.iamunclexu.confs.RequestUrl.URL_POST_DETAILS
 
 class RequestConf {
 
-    private var requestContainer: MutableMap<String, Controller> = HashMap()
+    private var requestMap: MutableMap<String, Controller> = HashMap()
     private var staticController: StaticController? = null
     private lateinit var notFoundController: NotFoundController
 
     fun init() {
-        requestContainer[URL_HOME] = HomeController()
-        requestContainer[URL_POST_DETAILS] = PostController()
-        requestContainer[URL_ABOUT] = AboutController()
-        requestContainer[URL_COMMENT] = CommentController()
+        requestMap[URL_GENERAL_INFO] = GeneralInfoController()
+        requestMap[URL_HOME] = HomeController()
+        requestMap[URL_POST_DETAILS] = PostController()
+        requestMap[URL_ABOUT] = AboutController()
+        requestMap[URL_COMMENT] = CommentController()
         staticController = StaticController()
         notFoundController = NotFoundController()
     }
@@ -79,7 +73,7 @@ class RequestConf {
     fun fetchControllerByUrl(uri: String): Controller? {
         val updatedUri = extractPureUri(uri)
 
-        for ((key, controller) in requestContainer) {
+        for ((key, controller) in requestMap) {
             if (key == updatedUri) {           // TODO the route rules can be more completed .
                 controller.setQueryData(extractQuery(uri))
                 return controller
