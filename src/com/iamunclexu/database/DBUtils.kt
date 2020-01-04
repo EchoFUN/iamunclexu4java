@@ -18,6 +18,7 @@ class DBUtils {
         dataSource.password = databaseInfo[PASSWORD]
 
         dataSource.maxPoolSize = Integer.parseInt(databaseInfo[CONNECTION_POOL_SIZE], 10)
+        dataSource.driverClass = "com.mysql.cj.jdbc.Driver"
     }
 
     companion object {
