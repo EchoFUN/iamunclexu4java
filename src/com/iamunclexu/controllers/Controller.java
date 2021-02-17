@@ -13,24 +13,24 @@ import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.codec.http.HttpResponse;
 
 public abstract class Controller {
-    private static Logger LOGGER = LoggerFactory.getLogger(Controller.class);
-    Map<String, String> queryData;
+  private static Logger LOGGER = LoggerFactory.getLogger(Controller.class);
+  Map<String, String> queryData;
 
-    public abstract HttpResponse process(HttpRequest request);
+  public abstract HttpResponse process(HttpRequest request);
 
-    public String render(String tpl, Map<String, Object> root) {
-        Configuration configuration = TemplateConf.Companion.fetchConfiguration();
-        StringWriter builder = new StringWriter();
+  public String render(String tpl, Map<String, Object> root) {
+    Configuration configuration = TemplateConf.Companion.fetchConfiguration();
+    StringWriter builder = new StringWriter();
 
-        try {
-            configuration.getTemplate(tpl).process(root, builder);
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-        }
-        return builder.toString();
+    try {
+      configuration.getTemplate(tpl).process(root, builder);
+    } catch (Exception e) {
+      LOGGER.error(e.getMessage());
     }
+    return builder.toString();
+  }
 
-    public void setQueryData(Map<String, String> queryData) {
-        this.queryData = queryData;
-    }
+  public void setQueryData(Map<String, String> queryData) {
+    this.queryData = queryData;
+  }
 }

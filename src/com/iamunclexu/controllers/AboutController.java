@@ -17,17 +17,17 @@ import io.netty.handler.codec.http.HttpVersion;
 
 public class AboutController extends Controller {
 
-    PostModel postModel = new PostModel();
+  PostModel postModel = new PostModel();
 
-    @Override
-    public HttpResponse process(HttpRequest request) {
-        Map<String, Object> root = new HashMap<>();
-        root.put("menus", (new MenuModel()).fetchMenus());
-        root.put("microblogs", (new MicroBlogsModel()).fetchMicroBlogs());
-        root.put("links", (new LinkModel()).fetchLinks());
-        root.put("recent_post", postModel.fetchRecentPost());
-        root.put("archived", postModel.fetchArchived());
-        root.put("url", "/about");
-        return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, Unpooled.wrappedBuffer(render("about.ftl", root).getBytes()));
-    }
+  @Override
+  public HttpResponse process(HttpRequest request) {
+    Map<String, Object> root = new HashMap<>();
+    root.put("menus", (new MenuModel()).fetchMenus());
+    root.put("microblogs", (new MicroBlogsModel()).fetchMicroBlogs());
+    root.put("links", (new LinkModel()).fetchLinks());
+    root.put("recent_post", postModel.fetchRecentPost());
+    root.put("archived", postModel.fetchArchived());
+    root.put("url", "/about");
+    return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, Unpooled.wrappedBuffer(render("about.ftl", root).getBytes()));
+  }
 }

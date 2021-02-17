@@ -20,85 +20,85 @@ import java.util.regex.Pattern
 
 class RequestConf {
 
-    private var requestMap: MutableMap<String, Controller> = HashMap()
-    private var staticController: StaticController? = null
-    private lateinit var notFoundController: NotFoundController
+  private var requestMap: MutableMap<String, Controller> = HashMap()
+  private var staticController: StaticController? = null
+  private lateinit var notFoundController: NotFoundController
 
-    fun init() {
-        requestMap[URL_GENERAL_INFO] = GeneralInfoController()
-        requestMap[URL_HOME] = HomeController()
-        requestMap[URL_POST_DETAILS] = PostController()
-        requestMap[URL_ABOUT] = AboutController()
-        requestMap[URL_COMMENT] = CommentController()
-        staticController = StaticController()
-        notFoundController = NotFoundController()
+  fun init() {
+    requestMap[URL_GENERAL_INFO] = GeneralInfoController()
+    requestMap[URL_HOME] = HomeController()
+    requestMap[URL_POST_DETAILS] = PostController()
+    requestMap[URL_ABOUT] = AboutController()
+    requestMap[URL_COMMENT] = CommentController()
+    staticController = StaticController()
+    notFoundController = NotFoundController()
+  }
+
+  private fun extractPureUri(uri: String): String {
+    var pureUri = uri
+
+    if (uri.contains("?")) {
+      val tokens = uri.split("\\?".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+      if (tokens.size > 1) {
+        pureUri = tokens[0]
+      }
+    }
+    return pureUri
+  }
+
+  private fun extractQuery(uri: String): Map<String, String> {
+    val queryMap = HashMap<String, String>()
+
+    var decodedUri: String? = null
+    try {
+      decodedUri = URLDecoder.decode(uri, "UTF-8")
+    } catch (e: UnsupportedEncodingException) {
+      LOGGER.error(e.message)
     }
 
-    private fun extractPureUri(uri: String): String {
-        var pureUri = uri
+    val pattern = Pattern.compile("([^?=&]+)(=([^&]*))?")
+    val matcher = pattern.matcher(decodedUri!!)
+    while (matcher.find()) {
+      val key = matcher.group(1)
+      val value = matcher.group(3)   // TODO In case of any inject Risks !
+      if (key != null && value != null) {
 
-        if (uri.contains("?")) {
-            val tokens = uri.split("\\?".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-            if (tokens.size > 1) {
-                pureUri = tokens[0]
-            }
-        }
-        return pureUri
+
+        queryMap[key] = value
+      }
+    }
+    return queryMap
+  }
+
+  fun fetchControllerByUrl(uri: String): Controller? {
+    val updatedUri = extractPureUri(uri)
+
+    for ((key, controller) in requestMap) {
+      if (key == updatedUri) {           // TODO the route rules can be more completed .
+        controller.setQueryData(extractQuery(uri))
+        return controller
+      }
     }
 
-    private fun extractQuery(uri: String): Map<String, String> {
-        val queryMap = HashMap<String, String>()
+    // Execute the static files .
+    return if (Utils.isStaticUri(uri)) {
+      staticController
+    } else notFoundController
+  }
 
-        var decodedUri: String? = null
-        try {
-            decodedUri = URLDecoder.decode(uri, "UTF-8")
-        } catch (e: UnsupportedEncodingException) {
-            LOGGER.error(e.message)
+  companion object {
+    private val LOGGER = LoggerFactory.getLogger(RequestConf::class.java)
+
+    private var requestMap: RequestConf? = null
+      get() {
+        if (field == null) {
+          field = RequestConf()
         }
+        return field
+      }
 
-        val pattern = Pattern.compile("([^?=&]+)(=([^&]*))?")
-        val matcher = pattern.matcher(decodedUri!!)
-        while (matcher.find()) {
-            val key = matcher.group(1)
-            val value = matcher.group(3)   // TODO In case of any inject Risks !
-            if (key != null && value != null) {
-
-
-                queryMap[key] = value
-            }
-        }
-        return queryMap
+    fun inst(): RequestConf {
+      return requestMap!!
     }
-
-    fun fetchControllerByUrl(uri: String): Controller? {
-        val updatedUri = extractPureUri(uri)
-
-        for ((key, controller) in requestMap) {
-            if (key == updatedUri) {           // TODO the route rules can be more completed .
-                controller.setQueryData(extractQuery(uri))
-                return controller
-            }
-        }
-
-        // Execute the static files .
-        return if (Utils.isStaticUri(uri)) {
-            staticController
-        } else notFoundController
-    }
-
-    companion object {
-        private val LOGGER = LoggerFactory.getLogger(RequestConf::class.java)
-
-        private var requestMap: RequestConf? = null
-            get() {
-                if (field == null) {
-                    field = RequestConf()
-                }
-                return field
-            }
-
-        fun inst(): RequestConf {
-            return requestMap!!
-        }
-    }
+  }
 }

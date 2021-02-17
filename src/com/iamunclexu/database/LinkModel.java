@@ -13,44 +13,44 @@ import java.util.List;
 import java.util.Map;
 
 public class LinkModel {
-    private static Logger LOGGER = LoggerFactory.getLogger(LinkModel.class);
+  private static Logger LOGGER = LoggerFactory.getLogger(LinkModel.class);
 
-    Connection connection = null;
-    Statement statement = null;
-    ResultSet resultSet = null;
+  Connection connection = null;
+  Statement statement = null;
+  ResultSet resultSet = null;
 
-    public List<Map<String, String>> fetchLinks() {
-        List<Map<String, String>> links = new ArrayList<>();
-        try {
-            connection = DBUtils.Companion.getConnection();
-            statement = connection.createStatement();
+  public List<Map<String, String>> fetchLinks() {
+    List<Map<String, String>> links = new ArrayList<>();
+    try {
+      connection = DBUtils.Companion.getConnection();
+      statement = connection.createStatement();
 
-            resultSet = statement.executeQuery("select id, title, url from link");
-            while (resultSet.next()) {
-                Map<String, String> fieldDataSet = new HashMap<>();
-                fieldDataSet.put("id", String.valueOf(resultSet.getInt("id")));
-                fieldDataSet.put("title", resultSet.getString("title"));
-                fieldDataSet.put("url", resultSet.getString("url"));
-                links.add(fieldDataSet);
-            }
+      resultSet = statement.executeQuery("select id, title, url from link");
+      while (resultSet.next()) {
+        Map<String, String> fieldDataSet = new HashMap<>();
+        fieldDataSet.put("id", String.valueOf(resultSet.getInt("id")));
+        fieldDataSet.put("title", resultSet.getString("title"));
+        fieldDataSet.put("url", resultSet.getString("url"));
+        links.add(fieldDataSet);
+      }
 
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-        } finally {
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    DBUtils.Companion.releaseConnection(connection);
-                }
-            } catch (SQLException e) {
-                LOGGER.error(e.getMessage());
-            }
+    } catch (Exception e) {
+      LOGGER.error(e.getMessage());
+    } finally {
+      try {
+        if (resultSet != null) {
+          resultSet.close();
         }
-        return links;
+        if (statement != null) {
+          statement.close();
+        }
+        if (connection != null) {
+          DBUtils.Companion.releaseConnection(connection);
+        }
+      } catch (SQLException e) {
+        LOGGER.error(e.getMessage());
+      }
     }
+    return links;
+  }
 }
