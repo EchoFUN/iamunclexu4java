@@ -13,25 +13,20 @@
 package com.iamunclexu.service
 
 import com.iamunclexu.confs.RequestConf
+import com.iamunclexu.confs.SysConf.WEB_PORT
 import com.iamunclexu.confs.TemplateConf
 import com.iamunclexu.database.DBUtils
 import com.iamunclexu.http.HttpHandler
-
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.ChannelOption
-import io.netty.channel.ChannelPipeline
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioServerSocketChannel
 import io.netty.handler.codec.http.HttpObjectAggregator
 import io.netty.handler.codec.http.HttpRequestDecoder
 import io.netty.handler.codec.http.HttpResponseEncoder
-
-import com.iamunclexu.confs.SysConf.WEB_PORT
+import org.slf4j.LoggerFactory
 
 class Server(private val port: Int) {
 
