@@ -1,3 +1,3 @@
-scp -r templates static root@172.105.192.96:/frontend
+scp -r templates static root@172.104.108.245:/frontend
 
 nohup java -jar iamunclexu4java.jar &
