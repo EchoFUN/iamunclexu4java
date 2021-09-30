@@ -83,7 +83,7 @@ a {
 }
 
 .wrapper {
-  background: url(/static/image/bg.png) center repeat-y;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB9AAAAAFCAYAAAAdbHdrAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAHXRFWHRDb21tZW50AENyZWF0ZWQgd2l0aCBUaGUgR0lNUO9kJW4AAABkSURBVHja7dkxDQMwEATBjf0ozB+PKTkoIqWYgXDdaT/vvRcAAAAA/Jl7b+ec9t7NTDPTWsswAADAz3gcAAAAAAAAAJCADgAAAAAAAACVgA4AAAAAAAAAlYAOAAAAAAAAAFV9AWE0BuVV6WHzAAAAAElFTkSuQmCC) center repeat-y;
 }
 
 .wrapper .wrapper-inner {
