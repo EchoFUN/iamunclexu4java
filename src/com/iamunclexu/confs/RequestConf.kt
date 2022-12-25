@@ -9,6 +9,7 @@ import com.iamunclexu.controllers.NotFoundController
 import com.iamunclexu.controllers.PostController
 import com.iamunclexu.controllers.StaticController
 import com.iamunclexu.controllers.GeneralInfoController
+import com.iamunclexu.controllers.NFTController
 import com.iamunclexu.utils.Utils
 
 import org.slf4j.LoggerFactory
@@ -29,6 +30,7 @@ class RequestConf {
     requestMap[URL_HOME] = HomeController()
     requestMap[URL_POST_DETAILS] = PostController()
     requestMap[URL_ABOUT] = AboutController()
+    requestMap[URL_NFT] = NFTController()
     requestMap[URL_COMMENT] = CommentController()
     staticController = StaticController()
     notFoundController = NotFoundController()

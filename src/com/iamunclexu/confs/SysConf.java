@@ -17,14 +17,14 @@ public class SysConf {
 
   public static int WEB_PORT = 8001;
 
-  public static String FRONTEND_ROOT = (build.equals(PRODUCTION_ENV_FLAG) ? "/frontend" : "/Users/xukai/Documents/workspace/iamunclexu4java");
+  public static String FRONTEND_ROOT = (build.equals(PRODUCTION_ENV_FLAG) ? "/frontend" : "/Users/iamunclexu/Documents/workspace/iamunclexu4java");
 
   private static Map<String, String> databaseInfo = new HashMap<>();
 
   public static Map<String, String> fetchDatabaseInfo() {
     databaseInfo.put(URL, "jdbc:mysql://127.0.0.1:3306/yymg?useSSL=false&useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT&allowPublicKeyRetrieval=true");
     databaseInfo.put(USERNAME, "root");
-    databaseInfo.put(PASSWORD, "123456");
+    databaseInfo.put(PASSWORD, "12345678");
 
     databaseInfo.put(CONNECTION_POOL_SIZE, "100");
     return databaseInfo;

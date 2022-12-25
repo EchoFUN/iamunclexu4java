@@ -26,7 +26,6 @@
   </div>
 
   <!-- Micro BLOG . -->
-  <#--
   <div class="widget">
     <h3>找个地方瞎 BB</h3>
     <ul>
@@ -37,7 +36,6 @@
         </#list>
     </ul>
   </div>
-  -->
 
     <!-- Recent posts . -->
   <div class="widget">

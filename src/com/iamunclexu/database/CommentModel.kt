@@ -98,8 +98,7 @@ class CommentModel {
     try {
       connection = DBUtils.connection
       statement = connection!!.createStatement()
-      resultSet =
-        statement!!.executeQuery("select id, name, content, date from comment where approved = 1 and pid = $postId")
+      resultSet = statement!!.executeQuery("select id, name, content, date from comment where approved = 1 and pid = $postId")
       while (resultSet!!.next()) {
         val fieldDataSet = HashMap<String, String>()
         fieldDataSet["id"] = resultSet!!.getInt("id").toString()
