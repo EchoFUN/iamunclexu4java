@@ -20,7 +20,7 @@
 <div class="wrapper">
   <div class="wrapper-inner">
     <div class="main article-list">
-
+      <span>本站点计划发行自己的 NFT，敬请期待。</span>
 
 
     </div>

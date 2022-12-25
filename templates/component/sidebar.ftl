@@ -11,8 +11,6 @@
       <br/>热爱
       <strong>Code</strong>和
       <strong>音乐</strong>
-      <br/>
-      <strong>字节跳动</strong>研发工程师
       <br/>Github粉，
       <strong>
         <a href="http://github.com/echofun" target="_blank">Github地址</a>
