@@ -8,10 +8,7 @@ import com.iamunclexu.database.PostModel;
 import com.iamunclexu.utils.Utils;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import io.netty.buffer.Unpooled;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;
@@ -32,13 +29,14 @@ public class PostController extends Controller {
     Map<String, String> post = postModel.fetchPostByID(postId);
     if (post != null) {
       for (String key : post.keySet()) {
-        if (key == "date") {
+        if (Objects.equals(key, "date")) {
           post.put("date", Utils.dateFormatter(post.get("date")));
           break;
         }
       }
       post.put("counter", String.valueOf(commentModel.queryCounterByPost(Integer.parseInt(post.get("id")))));
       root.put("post_details", post);
+      root.put("title", post.get("title"));
     }
     List<Map<String, String>> comments = (new CommentModel()).fetchCListByPost(postId);
     for (int i = 0; i < comments.size(); i++) {

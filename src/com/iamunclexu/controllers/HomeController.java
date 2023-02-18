@@ -53,6 +53,7 @@ public class HomeController extends Controller {
       }
     }
     root.put("posts", posts);
+    root.put("title", "首页");
     root.put("menus", (new MenuModel()).fetchMenus());
     root.put("microblogs", (new MicroBlogsModel()).fetchMicroBlogs());
     root.put("links", (new LinkModel()).fetchLinks());

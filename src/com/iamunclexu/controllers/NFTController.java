@@ -18,6 +18,7 @@ public class NFTController extends Controller {
   public HttpResponse process(HttpRequest request) {
     Map<String, Object> root = new HashMap<>();
     root.put("menus", (new MenuModel()).fetchMenus());
+    root.put("title", "NFT");
     root.put("microblogs", (new MicroBlogsModel()).fetchMicroBlogs());
     root.put("links", (new LinkModel()).fetchLinks());
     root.put("recent_post", postModel.fetchRecentPost());

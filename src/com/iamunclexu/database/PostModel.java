@@ -92,7 +92,7 @@ public class PostModel {
   }
 
   public List<Map<String, String>> fetchRecentPost() {
-    List<Map<String, String>> posts = new ArrayList();
+    List<Map<String, String>> posts = new ArrayList<>();
 
     try {
       connection = DBUtils.Companion.getConnection();

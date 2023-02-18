@@ -25,6 +25,7 @@ public class AboutController extends Controller {
     root.put("menus", (new MenuModel()).fetchMenus());
     root.put("microblogs", (new MicroBlogsModel()).fetchMicroBlogs());
     root.put("links", (new LinkModel()).fetchLinks());
+    root.put("title", "关于我");
     root.put("recent_post", postModel.fetchRecentPost());
     root.put("archived", postModel.fetchArchived());
     root.put("url", "/about");

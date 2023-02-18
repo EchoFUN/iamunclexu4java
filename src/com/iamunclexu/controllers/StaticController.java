@@ -24,7 +24,7 @@ import static com.iamunclexu.confs.SysConf.FRONTEND_ROOT;
 import static io.netty.handler.codec.http.HttpHeaderNames.CONTENT_TYPE;
 
 public class StaticController extends Controller {
-  private static Logger LOGGER = LoggerFactory.getLogger(StaticController.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(StaticController.class);
 
   @Override
   public HttpResponse process(HttpRequest request) {
@@ -36,7 +36,7 @@ public class StaticController extends Controller {
     HttpResponseStatus httpResponseStatus = HttpResponseStatus.OK;
     DefaultFullHttpResponse response;
     if (file.isFile() && file.exists()) {
-      FileInputStream inputStream = null;
+      FileInputStream inputStream;
       try {
         inputStream = new FileInputStream(file);
         byte[] byteBuffer = new byte[1024];
@@ -62,10 +62,14 @@ public class StaticController extends Controller {
     if (uri.endsWith(".css")) {
       headers.add(CONTENT_TYPE, "text/css");
     }
-    String[] pictureSuffix = {"jpg", "png", "jpeg", "gif"};
+    String[] pictureSuffix = {"jpg", "png", "jpeg", "gif", "ico"};
     for (int i = 0; i < pictureSuffix.length; i++) {
       if (uri.endsWith("." + pictureSuffix[i])) {
-        headers.add(CONTENT_TYPE, "image/" + pictureSuffix[i]);
+        if (pictureSuffix[i].equals("ico")) {
+          headers.add(CONTENT_TYPE, "image/x-icon");
+        } else {
+          headers.add(CONTENT_TYPE, "image/" + pictureSuffix[i]);
+        }
         break;
       }
     }
